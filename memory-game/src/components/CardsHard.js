@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
-class Cards extends Component {
-    
+class CardsHard extends Component {
+
     render () {
-        console.log(this.props)
         return (
             <div>
-                Hey
+                Hard
                 <Link to="/"><button className="btn-lg navbar-btn active">Home</button></Link>
-            
             </div>
         );  
     }
 }
 
-export default Cards;
+export default CardsHard;
