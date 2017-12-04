@@ -4,25 +4,22 @@ import {Link} from 'react-router-dom';
 
 class Memory extends Component {
   render() {
-	console.log(this.props.songs[0].word)
     return (
       <div className="container jumbotron">
-	 
-          <h1 className="App-title">Welcome to My Memory Game</h1>
-          <p>Heres some information about this game.. blah blah 
-			reay to play? </p>
-			
-			<p> Did this work? </p>
+          <h1 className="App-title">MEMORY.. </h1>
+			<div className="name"> created by Maria J Gallegos-Vallejo</div>
+			<h2> ... got one? </h2>
+				
 			<div className="button">
 			<Link to ="/Cards"> <button className="btn-lg navbar-btn active"> 
-				<h2> EASY</h2>
+				<h3> EASY</h3>
 					</button>
 					</Link>
 			</div>
 
 			<div className="button">
 			<Link to ="/CardsMed"> <button className="btn-lg navbar-btn active"> 
-				<h2> MEDIUM</h2>
+				<h3> MEDIUM</h3>
 					</button>
 					</Link>
 			</div>
@@ -30,7 +27,7 @@ class Memory extends Component {
 					
 			<div className="button">
 			<Link to ="/CardsHard"> <button className="btn-lg navbar-btn active"> 
-				<h2>Hard</h2>
+				<h3>Hard</h3>
 					</button>
 					</Link>
 			</div>
