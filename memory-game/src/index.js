@@ -14,7 +14,7 @@ function Song(word, description, id) {
 }
 
 const songs = [ 
-    new Song('react', 'thing used to code', 0),
+    new Song('Node JS', 'a technology built on Googles V8 JavaScript engine', 0),
     new Song('express', 'thingused to talk back and forth pages', 1),
     new Song('Apple', 'tastes great', 2)
 ]
