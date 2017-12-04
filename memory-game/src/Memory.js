@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 class Memory extends Component {
   render() {
-	console.log(this.props.word)
+	console.log(this.props.songs[0].word)
     return (
       <div className="container jumbotron">
 	 
@@ -12,7 +12,7 @@ class Memory extends Component {
           <p>Heres some information about this game.. blah blah 
 			reay to play? </p>
 			
-			<h1> {this.props.description}</h1>
+			<h1> {this.props.songs[0].description}</h1>
 			<p> Did this work? </p>
 			<div className="button">
 			<Link to ="/Cards"> <button className="btn-lg navbar-btn active"> 

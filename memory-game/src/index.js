@@ -23,8 +23,8 @@ const songs = [
 ReactDOM.render(
     <Router>
         <Switch>
-            <Route exact path='/' component={Memory} songs={songs}/>
-            <Route path='/Cards' component={Cards} songs={songs}/>
+            <Route exact path='/' render={(props) => <Memory {...props} songs={songs} />}/>
+            <Route path='/Cards' render={(props) => <Cards {...props} songs={songs} />}/>
             <Route path='/CardsMed' component={CardsMed} />
             <Route path='/CardsHard' component={CardsHard} />
         </Switch>
