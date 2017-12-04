@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/Mjgalle/final_assignment/issues"
   },
-  "homepage": "https://github.com/Mjgalle/final_assignment#readme"
+  "homepage": "https://github.com/Mjgalle/final_assignment#readme",
+  "dependencies": {
+    "react-router-dom": "^4.2.2"
+  }
 }
