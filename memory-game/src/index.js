@@ -15,8 +15,8 @@ function Song(word, description, id) {
 
 const songs = [ 
     new Song('Node JS', 'a technology built on Googles V8 JavaScript engine', 0),
-    new Song('express', 'thingused to talk back and forth pages', 1),
-    new Song('Apple', 'tastes great', 2)
+    new Song('Synchronous Code', 'code that follows a specific order', 1),
+    new Song('Asynchronous Code', 'code that does NOT follow a specific order', 2)
 ]
 
 

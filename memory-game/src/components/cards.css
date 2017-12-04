@@ -1,9 +1,11 @@
 .card {
     background: pink;
     height: 200px;
+    max-width: 200px;
 }
 
 .cards {
     background: lightgreen;
     height: 200px;
+    max-width: 200px;
 }
