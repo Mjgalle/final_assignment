@@ -12,14 +12,14 @@ class Memory extends Component {
 				
 			<div className="button">
 			<Link to ="/Cards"> <button className="btn-lg navbar-btn active"> 
-				<h3> EASY</h3>
+				<h3> Easy</h3>
 					</button>
 					</Link>
 			</div>
 
 			<div className="button">
 			<Link to ="/CardsMed"> <button className="btn-lg navbar-btn active"> 
-				<h3> MEDIUM</h3>
+				<h3> Medium</h3>
 					</button>
 					</Link>
 			</div>

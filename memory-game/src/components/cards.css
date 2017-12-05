@@ -1,11 +1,11 @@
 .card {
-    background: pink;
+    background: rgba(243, 179, 191, 0.911);
     height: 200px;
     max-width: 200px;
 }
 
 .cards {
-    background: lightgreen;
+    background: rgba(165, 248, 165, 0.678);
     height: 200px;
     max-width: 200px;
 }
