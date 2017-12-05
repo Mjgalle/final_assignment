@@ -13,27 +13,11 @@ class Cards extends Component {
         });
     }
 
-    flipCard = (num) => {
-        let newId = this.state.currentCard.id + num;
-        if (newId < 0 ) {
-            newId = this.props.cards.length -1;
-        } else if (newId > this.props.cards.length -1) {
-            newId = 0;
-        }
-
-        let newCard = this.props.cards.find(cards => {
-            return cards.id === newId
-        });
-
-        this.showCard (newCard);
-    }
-
-    
     render () {
         return (
             <div className="container jumbotron">
                 <div className="row">
-                    <div className="col-md-6 col-md-offset-2 card">
+                    <div className="col-md-6 card">
                     <button onClick={() => setTimeout(function(){alert('Hello');}, 3000)}> Click</button>
                     <p> {this.props.cards[0].word}</p>
                     </div>
@@ -42,7 +26,7 @@ class Cards extends Component {
                     </div>
                 </div>
                 <div className="row second">
-                    <div className="col-md-6 col-md-offset-2 cards">
+                    <div className="col-md-6 cards">
                     <p> {this.props.cards[1].word}</p>
                     </div>
                     <div className="col-md-6 col-md-offset-2 card">
@@ -50,7 +34,7 @@ class Cards extends Component {
                     </div>
                 </div>
                 <div className="row second">
-                    <div className="col-md-6 col-md-offset-2 card">
+                    <div className="col-md-6 card">
                     <p> {this.props.cards[2].word}</p>
                     </div>
                     <div className="col-md-6 col-md-offset-2 cards">

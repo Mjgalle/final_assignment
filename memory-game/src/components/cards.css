@@ -2,14 +2,16 @@
     background: rgba(243, 179, 191, 0.911);
     height: 200px;
     max-width: 200px;
+    border-radius: 25px;
 }
 
 .cards {
     background: rgba(165, 248, 165, 0.678);
     height: 200px;
     max-width: 200px;
+    border-radius: 25px;
 }
 
-.second {
-    padding-top: 29px;
+p, .second {
+    padding-top: 30px;
 }
