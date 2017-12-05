@@ -16,6 +16,9 @@ class Cards extends Component {
     render () {
         return (
             <div className="container jumbotron">
+                <div>
+                    <h1>Match The Cards! </h1>
+                </div>
                 <div className="row">
                     <div className="col-md-6 card">
                     <button onClick={() => setTimeout(function(){alert('Hello');}, 3000)}> Click</button>

@@ -6,7 +6,7 @@ class Memory extends Component {
   render() {
     return (
       <div className="container jumbotron">
-          <h1 className="App-title">MEMORY.. </h1>
+          <h1>MEMORY.. </h1>
 			<div className="name"> created by Maria J Gallegos-Vallejo</div>
 			<h2> ... got one? </h2>
 				
