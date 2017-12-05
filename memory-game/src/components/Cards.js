@@ -13,6 +13,14 @@ class Cards extends Component {
         });
     }
 
+    getInitialState = () => {
+        return { showResults: false };
+    }
+
+    onClick= ()=> {
+        this.setState({ showResults: true });
+    }
+    
     render () {
         return (
             <div className="container jumbotron">
@@ -25,7 +33,9 @@ class Cards extends Component {
                     <p> {this.props.cards[0].word}</p>
                     </div>
                     <div className="col-md-6 col-md-offset-2 cards">
-                    <p> {this.props.cards[0].description}</p>
+                    <button onClick={this.onClick}>
+                    { this.state.showResults ? <p>{this.props.cards[1].word}</p> : null }
+                    </button>
                     </div>
                 </div>
                 <div className="row second">
