@@ -9,12 +9,23 @@ class Cards extends Component {
 
     showCard = (cards) => {
         this.setState({
-            currentCard: cards
+            currentCard: this.props.cards[0].word
         });
     }
 
     flipCard = (num) => {
         let newId = this.state.currentCard.id + num;
+        if (newId < 0 ) {
+            newId = this.props.cards.length -1;
+        } else if (newId > this.props.cards.length -1) {
+            newId = 0;
+        }
+
+        let newCard = this.props.cards.find(cards => {
+            return cards.id === newId
+        });
+
+        this.showCard (newCard);
     }
 
     
@@ -22,30 +33,33 @@ class Cards extends Component {
         return (
             <div className="container jumbotron">
                 <div className="row">
-                    <div className="col-md-6 card">
+                    <div className="col-md-6 col-md-offset-2 card">
+                    <button onClick={() => setTimeout(function(){alert('Hello');}, 3000)}> Click</button>
                     <p> {this.props.cards[0].word}</p>
                     </div>
-                    <div className="col-md-6 cards">
+                    <div className="col-md-6 col-md-offset-2 cards">
                     <p> {this.props.cards[0].description}</p>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-md-6 cards">
+                <div className="row second">
+                    <div className="col-md-6 col-md-offset-2 cards">
                     <p> {this.props.cards[1].word}</p>
                     </div>
-                    <div className="col-md-6 card">
+                    <div className="col-md-6 col-md-offset-2 card">
                     <p> {this.props.cards[1].description}</p>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-md-6 card">
+                <div className="row second">
+                    <div className="col-md-6 col-md-offset-2 card">
                     <p> {this.props.cards[2].word}</p>
                     </div>
-                    <div className="col-md-6 cards">
+                    <div className="col-md-6 col-md-offset-2 cards">
                     <p> {this.props.cards[2].description}</p>
                     </div>
                 </div>
+                <div className="second">
                 <Link to="/"><button className="btn-lg navbar-btn active">Home</button></Link>
+                </div>
             </div>
         );  
     }
