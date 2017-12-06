@@ -11,6 +11,7 @@ function Card(word, description, id) {
     this.word = word;
     this.description = description;
     this.id = id;
+    this.shown = false;
 }
 
 const cards = [ 
