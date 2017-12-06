@@ -7,18 +7,19 @@ import Cards from './components/Cards';
 import CardsMed from './components/CardsMed';
 import CardsHard from './components/CardsHard';
 
-function Card(word, description, id) {
+function Card(word,  id) {
     this.word = word;
-    this.description = description;
     this.id = id;
     this.shown = false;
 }
 
 const cards = [ 
-    new Card('Node JS', 'Node JS des', 0),
-    new Card('Synchronous Code', 'sync code', 1),
-    new Card('Asynchronous Code', 'asyn code', 2),
-    new Card('React', 'react des', 3)
+    new Card('Node JS',  0),
+    new Card('Node JS',  0),
+    new Card('Synchronous Code',  1),
+    new Card('Synchronous Code',  1),
+    new Card('Asynchronous Code', 2),
+    new Card('React', 3)
 ]
 
 

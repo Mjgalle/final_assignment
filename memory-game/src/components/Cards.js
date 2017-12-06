@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 class Cards extends Component {
     state ={
         currentCard: null,
-        currentIndex: this.props.cards //this works, but if i do .id then it logs as undefined.
+        currentIndex:this.props.cards //this works, but if i do .id then it logs as undefined.
     }
 
     getInitialState = () => {
@@ -23,6 +23,29 @@ class Cards extends Component {
 			currentIndex: index
 		})
     }
+   
+     //myFunction = ()=> {
+     //   this.props.cards.sort(function(a, b){return 0.5 - Math.random()}); //needs a string
+     //}
+    shuffleCards = (array) => {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+      
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+      
+          // Pick a remaining element...
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+      
+          // And swap it with the current element.
+          temporaryValue = array[currentIndex];
+          array[currentIndex] = array[randomIndex];
+          array[randomIndex] = temporaryValue;
+        }
+      
+        return array;
+      }
+
     
     render () {
         let showingCard = this.props.cards.map((card, i) => {
@@ -42,6 +65,7 @@ class Cards extends Component {
                     <h1>Match The Cards! </h1>
                 </div>
                 <div className="row">
+                <button onClick={this.shuffleCards}> Try it </button>
                     {showingCard}
                 </div>
                 <div className="second">
