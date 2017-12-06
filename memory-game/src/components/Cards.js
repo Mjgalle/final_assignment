@@ -30,6 +30,8 @@ class Cards extends Component {
                 <div key={card.id}>
                     <div className="col-md-6 card">
                     <p>{card.word}</p>
+                    <p> {card.description}</p>
+                    <p> {card.id}</p>
                     </div>
                 </div>
             )
