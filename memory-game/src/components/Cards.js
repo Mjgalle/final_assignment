@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 class Cards extends Component {
     state ={
-        currentCard: null
+        currentCard: null,
     }
 
     showCard = (cards) => {
@@ -17,8 +17,8 @@ class Cards extends Component {
         return { showResults: false };
     }
 
-    onClick= ()=> {
-        this.setState({ showResults: true });
+    onClick = ()=> {
+        this.setState({ showResults: true })
     }
     
     render () {
@@ -29,13 +29,13 @@ class Cards extends Component {
                 </div>
                 <div className="row">
                     <div className="col-md-6 card">
-                    <button onClick={() => setTimeout(function(){alert('Hello');}, 3000)}> Click</button>
+                    <button onClick={() => setTimeout(function(){alert('hey');}, 3000)}> Click</button>
                     <p> {this.props.cards[0].word}</p>
                     </div>
                     <div className="col-md-6 col-md-offset-2 cards">
                     <button onClick={this.onClick}>
                     { this.state.showResults ? <p>{this.props.cards[1].word}</p> : null }
-                    </button>
+                   </button>
                     </div>
                 </div>
                 <div className="row second">
