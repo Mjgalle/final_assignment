@@ -14,10 +14,10 @@ function Card(word, description, id) {
 }
 
 const cards = [ 
-    new Card('Node JS', 'a technology built on Googles V8 JavaScript engine', 0),
-    new Card('Synchronous Code', 'code that follows a specific order', 1),
-    new Card('Asynchronous Code', 'code that does NOT follow a specific ord', 2),
-    new Card('React', 'Developed by facebook', 3)
+    new Card('Node JS', 'Node JS des', 0),
+    new Card('Synchronous Code', 'sync code', 1),
+    new Card('Asynchronous Code', 'asyn code', 2),
+    new Card('React', 'react des', 3)
 ]
 
 

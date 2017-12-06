@@ -13,7 +13,7 @@ class Cards extends Component {
     }
 
     onClick = ()=> {
-        this.setState({ showResults: true })//show content when clicked
+        this.setState({ showResults: true })//show content when clicked , **how can i just show specific content of one card**
         console.log(this.state.currentIndex)//logs all cards
     }
 
@@ -31,30 +31,30 @@ class Cards extends Component {
                     <h1>Match The Cards! </h1>
                 </div>
                 <div className="row">
-                    <div className="col-md-6 card">
-                    <button onClick={() => setTimeout(function(){alert('hey');}, 3000)}> Click</button>
+                    <div className="col-md-6 card" onClick={(props) => setTimeout(function(props){alert(this.props.cards[0].word);}, 3000)}> {/* if im passing the props into function why is it still saying undefined*/}
+
                     <p> {this.props.cards[0].word}</p>
                     </div>
                     <div className="col-md-6 col-md-offset-2 cards"  onClick={this.onClick}>
                     
-                    { this.state.showResults ? this.props.cards[0].description : null }
+                    { this.state.showResults ? <p>{this.props.cards[0].description} </p>: null }
                    
                     </div>
                 </div>
                 <div className="row second">
-                    <div className="col-md-6 cards">
-                    <p> {this.props.cards[1].word}</p>
+                    <div className="col-md-6 cards"  onClick={this.onClick}>
+                    { this.state.showResults ? <p>{this.props.cards[1].word} </p>: null }
                     </div>
-                    <div className="col-md-6 col-md-offset-2 card">
-                    <p> {this.props.cards[1].description}</p>
+                    <div className="col-md-6 col-md-offset-2 card"  onClick={this.onClick}>
+                    { this.state.showResults ? <p>{this.props.cards[1].description} </p>: null }
                     </div>
                 </div>
                 <div className="row second">
-                    <div className="col-md-6 card">
-                    <p> {this.props.cards[2].word}</p>
+                    <div className="col-md-6 card" onClick={this.onClick}>
+                    { this.state.showResults ? <p>{this.props.cards[2].word} </p>: null }
                     </div>
-                    <div className="col-md-6 col-md-offset-2 cards">
-                    <p> {this.props.cards[2].description}</p>
+                    <div className="col-md-6 col-md-offset-2 cards"  onClick={this.onClick}>
+                    { this.state.showResults ? <p>{this.props.cards[2].description} </p>: null }
                     </div>
                 </div>
                 <div className="second">
