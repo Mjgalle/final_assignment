@@ -39,7 +39,6 @@ class Cards extends Component {
                 <div>
                     <h1>Match The Cards! </h1>
                 </div>
-
                 <div className="row">
                     {showingCard}
                 </div>
