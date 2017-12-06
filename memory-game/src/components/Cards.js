@@ -5,20 +5,36 @@ import {Link} from 'react-router-dom';
 class Cards extends Component {
     state ={
         currentCard: null,
+        currentIndex: this.props.cards //this works, but if i do .id then it logs as undefined.
     }
 
     showCard = (cards) => {
         this.setState({
-            currentCard: this.props.cards[0].word
+            currentCard: this.props.cards[0].word //doesnt do anything
         });
     }
 
     getInitialState = () => {
-        return { showResults: false };
+        return { showResults: false };//show content when clicked
     }
 
     onClick = ()=> {
-        this.setState({ showResults: true })
+        this.setState({ showResults: true })//show content when clicked
+        console.log(this.state.currentIndex)//logs all cards
+    }
+
+    secondCard = () => {
+        let index = this.state.currentIndex
+        this.setState({
+			currentIndex: index
+		})
+		this.props.cards.map((id, i)=> {
+			if (i === index){
+				this.setState({
+					currentCard: this.props.cards.id,
+				})
+			}
+		})
     }
     
     render () {
@@ -34,7 +50,7 @@ class Cards extends Component {
                     </div>
                     <div className="col-md-6 col-md-offset-2 cards">
                     <button onClick={this.onClick}>
-                    { this.state.showResults ? <p>{this.props.cards[1].word}</p> : null }
+                    { this.state.showResults ? this.props.cards[0].description : null }
                    </button>
                     </div>
                 </div>
