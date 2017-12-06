@@ -8,25 +8,31 @@ class CardsMed extends Component {
         return (
             <div className="container jumbotron">
             <div className="row">
-                <div className="col-md-3 card">
+                <div className="col-md-3 cardmed">
                 <button onClick={() => this.state.flipCard(1)}> Click</button>
                 <p> {this.props.cards[0].word}</p>
                 </div>
-                <div className="col-md-3 cards">
+                <div className="col-md-3 cardsmed">
                 <p> {this.props.cards[0].description}</p>
                 </div>
-                <div className="col-md-3 cards">
+                <div className="col-md-3 cardmed">
                 <p> {this.props.cards[1].word}</p>
                 </div>
-                <div className="col-md-3 card">
+                <div className="col-md-3 cardsmed">
                 <p> {this.props.cards[1].description}</p>
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-6 card">
+                <div className="col-md-3 cardmed">
                 <p> {this.props.cards[2].word}</p>
                 </div>
-                <div className="col-md-6 cards">
+                <div className="col-md-3 cardsmed">
+                <p> {this.props.cards[2].description}</p>
+                </div>
+                <div className="col-md-3 cardmed">
+                <p> {this.props.cards[2].word}</p>
+                </div>
+                <div className="col-md-3 cardsmed">
                 <p> {this.props.cards[2].description}</p>
                 </div>
             </div>

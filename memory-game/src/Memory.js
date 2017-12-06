@@ -7,14 +7,17 @@ class Memory extends Component {
     return (
       <div className="container jumbotron">
           <h1>MEMORY.. </h1>
-			<div className="name"> created by Maria J Gallegos-Vallejo</div>
 			<h2> ... got one? </h2>
+
+			<div className="firstbox"> </div>
+			<div className="circle"> </div>
 				
 			<div className="button">
-			<Link to ="/Cards"> <button className="btn-lg navbar-btn active"> 
-				<h3> Easy</h3>
+				<Link to ="/Cards"> 
+					<button className="btn-lg navbar-btn active"> 
+						<h3> Easy</h3>
 					</button>
-					</Link>
+				</Link>
 			</div>
 
 			<div className="button">

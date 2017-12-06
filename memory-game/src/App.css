@@ -32,3 +32,37 @@ h3 {
   font-size: 12px;
   font-kerning: 30px;
 }
+
+.firstbox {
+  background-color: mediumaquamarine;
+  opacity: 0.5;
+  height: 200px;
+  width: 300px;
+  position: relative;
+  left: 500px;
+}
+
+.secondbox {
+  background-color: mediumslateblue;
+  opacity: 0.5;
+  height: 100px;
+  width: 400px;
+  position: relative;
+  bottom: 50px;
+  left: 200px;
+}
+
+.button {
+  position: relative;
+  top: -300px;
+}
+
+
+.circle {
+	width: 100px;
+	height: 100px;
+	background: red;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+}

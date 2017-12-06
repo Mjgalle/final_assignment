@@ -8,12 +8,6 @@ class Cards extends Component {
         currentIndex: this.props.cards //this works, but if i do .id then it logs as undefined.
     }
 
-    showCard = (cards) => {
-        this.setState({
-            currentCard: this.props.cards[0].word //doesnt do anything
-        });
-    }
-
     getInitialState = () => {
         return { showResults: false };//show content when clicked
     }
@@ -24,16 +18,9 @@ class Cards extends Component {
     }
 
     secondCard = () => {
-        let index = this.state.currentIndex
+        let index = this.state.currentIndex 
         this.setState({
 			currentIndex: index
-		})
-		this.props.cards.map((id, i)=> {
-			if (i === index){
-				this.setState({
-					currentCard: this.props.cards.id,
-				})
-			}
 		})
     }
     
@@ -48,10 +35,10 @@ class Cards extends Component {
                     <button onClick={() => setTimeout(function(){alert('hey');}, 3000)}> Click</button>
                     <p> {this.props.cards[0].word}</p>
                     </div>
-                    <div className="col-md-6 col-md-offset-2 cards">
-                    <button onClick={this.onClick}>
+                    <div className="col-md-6 col-md-offset-2 cards"  onClick={this.onClick}>
+                    
                     { this.state.showResults ? this.props.cards[0].description : null }
-                   </button>
+                   
                     </div>
                 </div>
                 <div className="row second">
