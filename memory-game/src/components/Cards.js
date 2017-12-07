@@ -6,7 +6,7 @@ class Cards extends Component {
     state = {
         Card: this.props.cards //this works, but if i do .id then it logs as undefined.
     }
-    componentDidMount() {              
+    componentDidMount() {             
     /*shuffleCards = (Card) => {
         var currentIndex = Card.length, temporaryValue, randomIndex;
       
@@ -24,6 +24,10 @@ class Cards extends Component {
         }
       }    */      
     }
+
+    /* if level of difficulty is easy, render out, 6 cards
+        if level of difficulty is medium, render out, 10 cards, 
+        if level of difficulty is hard, render out 16 cards... */ 
     
 
     clickMe = (index) => {
