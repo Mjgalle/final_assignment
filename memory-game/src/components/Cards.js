@@ -45,7 +45,7 @@ class Cards extends Component {
             return (
                 <div key={card.id}>
                     <div className="col-md-4 card" onClick={() => this.clickMe(i) } >
-                    {card.shown ?  <p> {card.word} </p> : ''}
+                    {card.shown ?  <img  className="image" src= {card.word}/> : ''}
                     </div>
                 </div>
             )

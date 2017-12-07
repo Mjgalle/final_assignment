@@ -14,10 +14,10 @@ function Card(word,  id, shown) {
 }
 
 const cards = [ 
-    new Card('Node JS',  0),
-    new Card('Node JS',  0),
+    new Card('/images/Dan.png',  0),
+    new Card('/images/Dan.png',  0),
     new Card('Synchronous Code',  1),
-    new Card('Synchronous Code',  1),
+    new Card('/images/Dan.png',  1),
     new Card('React', 3),
     new Card('React', 3)
 ]

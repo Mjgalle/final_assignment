@@ -19,3 +19,8 @@ p {
     font-size: 64px; 
     font-weight: 700; 
 }
+
+.image {
+    width: 100px;
+    padding-top: 10px;
+}
