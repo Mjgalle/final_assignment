@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './cards.css';
 import {Link} from 'react-router-dom';
 
+let array = ['hello', 'welcome', 'WHATSUP']
+
 class Cards extends Component {
     state ={
         currentCard: null,
@@ -17,17 +19,12 @@ class Cards extends Component {
         console.log(this.state.currentIndex)//logs all cards
     }
 
-    secondCard = () => {
-        let index = this.state.currentIndex 
-        this.setState({
-			currentIndex: index
-		})
-    }
    
-     //myFunction = ()=> {
-     //   this.props.cards.sort(function(a, b){return 0.5 - Math.random()}); //needs a string
-     //}
-    shuffleCards = (array) => {
+    //componentDidMount() {               
+    //myFunction = ()=> { for shuffling the array
+    //   this.props.cards.sort(function(a, b){return 0.5 - Math.random()}); //needs a string
+    //}
+    /*shuffleCards = (array) => {
         var currentIndex = array.length, temporaryValue, randomIndex;
       
         // While there remain elements to shuffle...
@@ -44,7 +41,10 @@ class Cards extends Component {
         }
       
         return array;
-      }
+        console.log(array)
+      }*/           
+    //}
+   
 
     
     render () {
@@ -53,8 +53,8 @@ class Cards extends Component {
                 <div key={card.id}>
                     <div className="col-md-6 card">
                     <p>{card.word}</p>
-                    <p> {card.description}</p>
                     <p> {card.id}</p>
+                    <p>{card.shown} </p>
                     </div>
                 </div>
             )
@@ -65,7 +65,6 @@ class Cards extends Component {
                     <h1>Match The Cards! </h1>
                 </div>
                 <div className="row">
-                <button onClick={this.shuffleCards}> Try it </button>
                     {showingCard}
                 </div>
                 <div className="second">

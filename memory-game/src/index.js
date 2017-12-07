@@ -7,7 +7,7 @@ import Cards from './components/Cards';
 import CardsMed from './components/CardsMed';
 import CardsHard from './components/CardsHard';
 
-function Card(word,  id) {
+function Card(word,  id, shown) {
     this.word = word;
     this.id = id;
     this.shown = false;
@@ -19,6 +19,8 @@ const cards = [
     new Card('Synchronous Code',  1),
     new Card('Synchronous Code',  1),
     new Card('Asynchronous Code', 2),
+    new Card('Asynchronous Code', 2),
+    new Card('React', 3),
     new Card('React', 3)
 ]
 
