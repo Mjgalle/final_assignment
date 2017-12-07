@@ -6,7 +6,8 @@ class Cards extends Component {
     state = {
         currentIndex: this.props.cards //this works, but if i do .id then it logs as undefined.
     }
-    //componentDidMount() {               
+    componentDidMount() {     
+        console.log('hey')          
     //myFunction = ()=> { for shuffling the array
     //   this.props.cards.sort(function(a, b){return 0.5 - Math.random()}); //needs a string
     //}
@@ -29,7 +30,7 @@ class Cards extends Component {
         return array;
         console.log(array)
       }*/           
-    //}
+    }
     
 
     clickMe = (index) => {
@@ -51,9 +52,9 @@ class Cards extends Component {
             )
         })
         return (
-            <div className="container jumbotron">
+            <div>
                 <div>
-                    <div className="match">Match The Cards! </div>
+                    <div className="match">Match The Cards!</div>
                 </div>
                 <div className="row">
                     {showingCard}

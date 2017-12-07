@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 class Memory extends Component {
   render() {
     return (
-      <div className="container jumbotron">
+      <div>
 			<div className="circle"></div>
 				<div className="title">MEMORY</div>
 				<div className="buttons">
