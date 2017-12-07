@@ -2,24 +2,10 @@ import React, { Component } from 'react';
 import './cards.css';
 import {Link} from 'react-router-dom';
 
-let array = ['hello', 'welcome', 'WHATSUP']
-
 class Cards extends Component {
-    state ={
-        currentCard: null,
-        currentIndex:this.props.cards //this works, but if i do .id then it logs as undefined.
+    state = {
+        currentIndex: this.props.cards //this works, but if i do .id then it logs as undefined.
     }
-
-    getInitialState = () => {
-        return { showResults: false };//not show content when clicked
-    }
-
-    onClick = ()=> {
-        this.setState({ showResults: true })//show content when clicked , **how can i just show specific content of one card**
-        console.log(this.state.currentIndex)//logs all cards
-    }
-
-   
     //componentDidMount() {               
     //myFunction = ()=> { for shuffling the array
     //   this.props.cards.sort(function(a, b){return 0.5 - Math.random()}); //needs a string
@@ -44,17 +30,22 @@ class Cards extends Component {
         console.log(array)
       }*/           
     //}
-   
+    
 
+    clickMe = (index) => {
+          let __shownCards = this.state.currentIndex;
+          __shownCards[index].shown = !__shownCards[index].shown;
+          this.setState({
+              shownCards: __shownCards
+          })
+    }
     
     render () {
         let showingCard = this.props.cards.map((card, i) => {
             return (
                 <div key={card.id}>
-                    <div className="col-md-6 card">
-                    <p>{card.word}</p>
-                    <p> {card.id}</p>
-                    <p>{card.shown} </p>
+                    <div className="col-md-4 card" onClick={() => this.clickMe(i) } >
+                    {card.shown ?  <p> {card.word} </p> : ''}
                     </div>
                 </div>
             )
@@ -62,7 +53,7 @@ class Cards extends Component {
         return (
             <div className="container jumbotron">
                 <div>
-                    <h1>Match The Cards! </h1>
+                    <div className="match">Match The Cards! </div>
                 </div>
                 <div className="row">
                     {showingCard}
@@ -76,7 +67,19 @@ class Cards extends Component {
 }
 
 export default Cards;
-/*  <div className="row second">
+
+
+/*
+getInitialState = () => {
+    return { showResults: true };//not show content when clicked
+}
+
+onClick = ()=> {
+    this.setState({ showResults: true })//show content when clicked , **how can i just show specific content of one card**
+    console.log(this.state.currentIndex)//logs all cards
+}
+
+  <div className="row second">
 <div className="col-md-6 cards"  onClick={this.onClick}>
 { this.state.showResults ? <p>{this.props.cards[1].word} </p>: null }
 </div>

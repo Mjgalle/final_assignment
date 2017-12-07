@@ -18,8 +18,6 @@ const cards = [
     new Card('Node JS',  0),
     new Card('Synchronous Code',  1),
     new Card('Synchronous Code',  1),
-    new Card('Asynchronous Code', 2),
-    new Card('Asynchronous Code', 2),
     new Card('React', 3),
     new Card('React', 3)
 ]
