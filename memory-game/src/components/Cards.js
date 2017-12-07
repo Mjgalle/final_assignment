@@ -4,15 +4,11 @@ import {Link} from 'react-router-dom';
 
 class Cards extends Component {
     state = {
-        currentIndex: this.props.cards //this works, but if i do .id then it logs as undefined.
+        Card: this.props.cards //this works, but if i do .id then it logs as undefined.
     }
-    componentDidMount() {     
-        console.log('hey')          
-    //myFunction = ()=> { for shuffling the array
-    //   this.props.cards.sort(function(a, b){return 0.5 - Math.random()}); //needs a string
-    //}
-    /*shuffleCards = (array) => {
-        var currentIndex = array.length, temporaryValue, randomIndex;
+    componentDidMount() {              
+    /*shuffleCards = (Card) => {
+        var currentIndex = Card.length, temporaryValue, randomIndex;
       
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {
@@ -22,19 +18,16 @@ class Cards extends Component {
           currentIndex -= 1;
       
           // And swap it with the current element.
-          temporaryValue = array[currentIndex];
-          array[currentIndex] = array[randomIndex];
-          array[randomIndex] = temporaryValue;
+          temporaryValue = Card[currentIndex];
+          Card[currentIndex] = Card[randomIndex];
+          Card[randomIndex] = temporaryValue;
         }
-      
-        return array;
-        console.log(array)
-      }*/           
+      }    */      
     }
     
 
     clickMe = (index) => {
-          let __shownCards = this.state.currentIndex;
+          let __shownCards = this.state.Card;
           __shownCards[index].shown = !__shownCards[index].shown;
           this.setState({
               shownCards: __shownCards
@@ -42,6 +35,7 @@ class Cards extends Component {
     }
     
     render () {
+        console.log(this.props.difficulty)
         let showingCard = this.props.cards.map((card, i) => {
             return (
                 <div key={card.id}>
@@ -68,23 +62,3 @@ class Cards extends Component {
 }
 
 export default Cards;
-
-
-/*
-getInitialState = () => {
-    return { showResults: true };//not show content when clicked
-}
-
-onClick = ()=> {
-    this.setState({ showResults: true })//show content when clicked , **how can i just show specific content of one card**
-    console.log(this.state.currentIndex)//logs all cards
-}
-
-  <div className="row second">
-<div className="col-md-6 cards"  onClick={this.onClick}>
-{ this.state.showResults ? <p>{this.props.cards[1].word} </p>: null }
-</div>
-<div className="col-md-6 col-md-offset-2 card"  onClick={this.onClick}>
-{ this.state.showResults ? <p>{this.props.cards[1].description} </p>: null }
-</div>
-</div>*/

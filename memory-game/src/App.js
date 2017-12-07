@@ -6,7 +6,6 @@ import CardsHard from './components/CardsHard';
 import Memory from './Memory';
 import {Link, Switch, Route} from 'react-router-dom';
 
-
 function Card(word,  id, shown) {
     this.word = word;
     this.id = id;
@@ -26,23 +25,30 @@ class App extends Component {
     constructor () {
         super ();
         this.state = {
-            Cards: cards
+            Cards: cards,
+            gameLevel: ''
         }
     } 
-      
-  render() {
 
-    return (
-      <div className="container jumbotron">
-		<Switch>
-            <Route exact path='/' render={(props) => <Memory {...props} cards={this.state.Cards} />}/>
-            <Route path='/Cards' render={(props) => <Cards {...props} cards={this.state.Cards} />}/>   
-            <Route path='/CardsMed' render={(props) => <CardsMed {...props} cards={this.state.Cards}/> }/>
-            <Route path='/CardsHard' component={CardsHard}  cards={this.state.Cards}/>
-        </Switch>
-      </div>
-    );
-  }
+    goToCards = (difficulty) => {    //redirects user to have this url
+
+        this.setState({
+            gameLevel: difficulty
+        })
+
+        this.props.history.push('/Cards')
+    }
+      
+    render() {
+        return (
+            <div className="container jumbotron">
+                <Switch>
+                    <Route path='/Cards' render={(props) => <Cards {...props} cards={this.state.Cards} difficulty={this.state.gameLevel} />}/> 
+                    <Route exact path='/' render={(props) => <Memory {...props} goToCards={this.goToCards}  cards={this.state.Cards} />}/>
+	            </Switch>
+            </div>
+        );
+    }
 }
 
 export default App;
