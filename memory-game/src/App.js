@@ -48,7 +48,8 @@ class App extends Component {
             Cards: cards,
             gameLevel: '', 
             allCards: cards,
-            state: false
+            state: false,
+            numberofClicks: 0
         }
     }
 
@@ -102,12 +103,42 @@ class App extends Component {
             Cards: Card
         })
     }
+
+    clickMe = (index) => {
+        if (this.state.numberofClicks < 2) { 
+        let __shownCards = Array.from(this.state.Cards);
+        let __numberofClicks = this.state.numberofClicks + 1
+
+        __shownCards[index].shown = !__shownCards[index].shown;
+        
+        this.setState({
+            Cards: __shownCards,
+            numberofClicks: __numberofClicks 
+        } , () =>{
+            if (this.state.numberofClicks === 2) {
+                setTimeout( () => {
+                    __shownCards = __shownCards.map(card => {
+                        card.shown = false
+                        return card
+                    })
+                    __numberofClicks = 0
+                    this.setState({
+                        Cards: __shownCards,
+                        numberofClicks: __numberofClicks 
+                    })
+                }, 1000) 
+              
+            }
+        } )
+    }
+        
+    }
       
     render() {
         return (
             <div className="container jumbotron">
                 <Switch>
-                    <Route path='/Cards' render={(props) => <Cards {...props} cards={this.state.Cards} difficulty={this.state.gameLevel} />}/> 
+                    <Route path='/Cards' render={(props) => <Cards {...props} cards={this.state.Cards} clickMe={this.clickMe} difficulty={this.state.gameLevel} />}/> 
                     <Route exact path='/' render={(props) => <Memory {...props} goToCards={this.goToCards}  cards={this.state.Cards} />}/>
                     <Route path='/Instructions' render={(props) => <Instructions {...props} />} />
 	            </Switch>
