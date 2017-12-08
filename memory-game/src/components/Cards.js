@@ -4,9 +4,11 @@ import {Link} from 'react-router-dom';
 
 class Cards extends Component {
     state = {
-        Card: this.props.cards //this works, but if i do .id then it logs as undefined.
+        Card: this.props.cards, //this works, but if i do .id then it logs as undefined.
+        Difficulty: this.props.difficulty
     }
-    componentDidMount() {             
+    componentDidMount() {  
+        console.log(this.props.difficulty)           
     /*shuffleCards = (Card) => {
         var currentIndex = Card.length, temporaryValue, randomIndex;
       
@@ -37,6 +39,12 @@ class Cards extends Component {
               shownCards: __shownCards
           })
     }
+
+    showEasy = (Difficulty) => {
+        if (Difficulty === 'easy') {
+
+        }
+    }
     
     render () {
         console.log(this.props.difficulty)
@@ -64,6 +72,7 @@ class Cards extends Component {
                     <div className="match">Match The Cards!</div>
                 </div>
                 <div className="row">
+                    {this.props.difficulty}
                     {easyCards}
                     {showingCard}
                 </div>

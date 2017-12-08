@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Cards from './components/Cards';
 import Memory from './Memory';
-import {Link, Switch, Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 
 function Card(word,  id, shown) {
     this.word = word;
@@ -11,7 +11,7 @@ function Card(word,  id, shown) {
 }
 
 const cards = [ 
-    new Card('/images/Dan.svg',  0),
+    new Card('/images/Dan.png',  0),
     new Card('/images/Dan.png',  0),
     new Card('/images/jamie.png',  1),
     new Card('/images/jamie.png',  1),
@@ -28,12 +28,10 @@ class App extends Component {
         }
     } 
 
-    goToCards = (difficulty) => {    //redirects user to have this url
-
+    goToCards = (difficulty) => {
         this.setState({
             gameLevel: difficulty
         })
-
         this.props.history.push('/Cards')
     }
       
