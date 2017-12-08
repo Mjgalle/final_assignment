@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import {Link} from 'react-router-dom';
 
 class Memory extends Component {
   render() {
@@ -19,9 +20,11 @@ class Memory extends Component {
             		</button>
         		</div>
 			<div className="smallbutton">
+				<Link to ="/Instructions">
 				<button className="btn"> 
-					<h5> Instructions </h5>
+					<h4> Instructions </h4>
 				</button>
+				</Link>
 			</div>	
       </div>
     );

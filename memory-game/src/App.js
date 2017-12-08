@@ -3,8 +3,9 @@ import './App.css';
 import Cards from './components/Cards';
 import Memory from './Memory';
 import {Switch, Route} from 'react-router-dom';
+import Instructions from './components/Instructions';
 
-function Card(word,  id, shown) {
+function Card(word,  id) {
     this.word = word;
     this.id = id;
     this.shown = false;
@@ -36,6 +37,10 @@ const cards = [
     
 ]
 
+//brandNewArray =  () => {
+//
+//}
+
 class App extends Component {
     constructor () {
         super ();
@@ -43,6 +48,7 @@ class App extends Component {
             Cards: cards,
             gameLevel: '', 
             allCards: cards,
+            state: false
         }
     }
 
@@ -50,16 +56,16 @@ class App extends Component {
         let emptyArray = []                     //set, it displays a specific # in the array,
         let numberOfPairs = 0                   //along with a specific number of pairs.
         if (difficulty === 'easy') {            //And while it does so,that the random array 
-            numberOfPairs = 2                   //with specific # ofpairs, that they 
+            numberOfPairs = 4                   //with specific # ofpairs, that they 
         } else if ( difficulty === 'medium') {  //have the same id # and can actually match.
-            numberOfPairs = 3
+            numberOfPairs = 6
         } else {
-            numberOfPairs = 4
+            numberOfPairs = 11
         }
         for(let n = 0; n < numberOfPairs; n ++) {
             let finished = false 
                 while (!finished) {
-                    let randomNumber = Math.floor(Math.random() * 3)
+                    let randomNumber = Math.floor(Math.random() * numberOfPairs)
                         if (!emptyArray.includes(randomNumber)) {
                             emptyArray.push(randomNumber)
                             finished = true
@@ -78,7 +84,7 @@ class App extends Component {
     }
 
     shuffleCards = (Card) => {                                          //this shuffles the
-        var currentIndex = Card.length, temporaryValue, randomIndex;    //array of cards
+        let currentIndex = Card.length, temporaryValue, randomIndex;    //array of cards
       
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {
@@ -103,6 +109,7 @@ class App extends Component {
                 <Switch>
                     <Route path='/Cards' render={(props) => <Cards {...props} cards={this.state.Cards} difficulty={this.state.gameLevel} />}/> 
                     <Route exact path='/' render={(props) => <Memory {...props} goToCards={this.goToCards}  cards={this.state.Cards} />}/>
+                    <Route path='/Instructions' render={(props) => <Instructions {...props} />} />
 	            </Switch>
             </div>
         );
@@ -110,3 +117,26 @@ class App extends Component {
 }
 
 export default App;
+
+
+/*
+    initialState =  ('reset') => {
+        function Card(word,  id) {
+            this.word = word;
+            this.id = id;
+            this.shown = false;
+        }
+        return {
+            new Card('/images/Dan.png',  0),
+            new Card('/images/Dan.png',  0),
+            new Card('/images/jamie.png',  1),
+            new Card('/images/jamie.png',  1),
+            new Card('/images/nick.png', 2),
+            new Card('/images/nick.png', 2),
+            new Card('/images/Lily.png', 3),
+            new Card('/images/Lily.png', 3),
+        }
+    resetState () {
+        this.state(this.initalState);
+    }
+}*/
