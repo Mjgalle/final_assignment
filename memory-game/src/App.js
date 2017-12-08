@@ -15,8 +15,8 @@ const cards = [
     new Card('/images/Dan.png',  0),
     new Card('/images/jamie.png',  1),
     new Card('/images/jamie.png',  1),
-    new Card('/images/nick.png', 3),
-    new Card('/images/nick.png', 3)
+    new Card('/images/nick.png', 2),
+    new Card('/images/nick.png', 2)
 ]
 
 class App extends Component {
@@ -27,12 +27,36 @@ class App extends Component {
             gameLevel: '', 
             allCards: cards
         }
-    } 
+    }
 
     goToCards = (difficulty) => {
-        this.shuffleCards(this.state.Cards)
+        let emptyArray = [] 
+        let numberOfPairs = 0 
+        if (difficulty === 'easy') {
+            numberOfPairs = 2
+        } else if ( difficulty === 'medium') {
+            numberOfPairs = 3
+        } else {
+            numberOfPairs = 3
+        }
+        for(let n = 0; n < numberOfPairs; n ++) {
+            let finished = false 
+            while (!finished) {
+
+            let randomNumber = Math.floor(Math.random() * 3)
+            if (!emptyArray.includes(randomNumber)) {
+                emptyArray.push(randomNumber)
+                finished = true
+            }
+        }
+        }
+
+        let secondArray = this.state.allCards.filter((card, i) =>  {
+            return (emptyArray.includes(card.id) )
+        }) 
+        this.shuffleCards(secondArray)
         this.setState({
-            gameLevel: difficulty
+            gameLevel: difficulty,
         })
         this.props.history.push('/Cards')
     }
