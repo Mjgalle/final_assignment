@@ -25,9 +25,9 @@ class Cards extends Component {
       }    */      
     }
 
-    /* if level of difficulty is easy, render out, 6 cards
-        if level of difficulty is medium, render out, 10 cards, 
-        if level of difficulty is hard, render out 16 cards... */ 
+    /* if level of difficulty is easy, render out, 4 cards
+        if level of difficulty is medium, render out, 6 cards, 
+        if level of difficulty is hard, render out 8 cards... */ 
     
 
     clickMe = (index) => {
@@ -40,6 +40,15 @@ class Cards extends Component {
     
     render () {
         console.log(this.props.difficulty)
+        let easyCards = this.props.cards.map ((card, i) => {
+            return (
+                <div key={card.id}>
+                    <div className="col-xs-2 col-md-6 cards" onClick={() => this.clickMe(i)} >
+                        {card.shown ? <img className="image" src={card.word}/> : ''}
+                    </div>
+                </div>
+                )
+            })
         let showingCard = this.props.cards.map((card, i) => {
             return (
                 <div key={card.id}>
@@ -55,6 +64,7 @@ class Cards extends Component {
                     <div className="match">Match The Cards!</div>
                 </div>
                 <div className="row">
+                    {easyCards}
                     {showingCard}
                 </div>
                 <div className="second">

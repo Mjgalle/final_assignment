@@ -8,6 +8,14 @@
     margin-bottom: 30px;
 }
 
+.cards {
+    background: pink;
+    height: 150px;
+    max-width: 150px;
+    border-radius: 25px;
+    
+}
+
 p {
     padding-top: 50px;
 }

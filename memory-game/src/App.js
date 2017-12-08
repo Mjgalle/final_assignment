@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Cards from './components/Cards';
-import CardsMed from './components/CardsMed';
-import CardsHard from './components/CardsHard';
 import Memory from './Memory';
 import {Link, Switch, Route} from 'react-router-dom';
 
