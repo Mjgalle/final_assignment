@@ -8,7 +8,15 @@ class Cards extends Component {
         Difficulty: this.props.difficulty
     }
     componentDidMount() {  
-        console.log(this.props.difficulty)           
+        console.log(this.props.difficulty + 'hello')  
+            if (this.props.difficulty === 'easy') {
+            console.log('this is the easy stuff') }  
+             if (this.props.difficulty === 'medium') {
+                 console.log('this is the medium stuff') 
+                }
+             if (this.props.difficulty === 'hard') {
+                 console.log('this is the hard cards!! which i still need to make')
+             }
     /*shuffleCards = (Card) => {
         var currentIndex = Card.length, temporaryValue, randomIndex;
       
@@ -39,12 +47,6 @@ class Cards extends Component {
               shownCards: __shownCards
           })
     }
-
-    showEasy = (Difficulty) => {
-        if (Difficulty === 'easy') {
-
-        }
-    }
     
     render () {
         console.log(this.props.difficulty)
@@ -72,9 +74,8 @@ class Cards extends Component {
                     <div className="match">Match The Cards!</div>
                 </div>
                 <div className="row">
-                    {this.props.difficulty}
                     {easyCards}
-                    {showingCard}
+                  {/*}  {showingCard}*/}
                 </div>
                 <div className="second">
                 <Link to="/"><button className="btn-lg navbar-btn active">Home</button></Link>
