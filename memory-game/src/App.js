@@ -16,7 +16,9 @@ const cards = [
     new Card('/images/jamie.png',  1),
     new Card('/images/jamie.png',  1),
     new Card('/images/nick.png', 2),
-    new Card('/images/nick.png', 2)
+    new Card('/images/nick.png', 2),
+    new Card('/images/Lily.png', 3),
+    new Card('/images/Lily.png', 3)
 ]
 
 class App extends Component {
@@ -37,7 +39,7 @@ class App extends Component {
         } else if ( difficulty === 'medium') {  //have the same id # and can actually match.
             numberOfPairs = 3
         } else {
-            numberOfPairs = 3
+            numberOfPairs = 4
         }
         for(let n = 0; n < numberOfPairs; n ++) {
             let finished = false 
