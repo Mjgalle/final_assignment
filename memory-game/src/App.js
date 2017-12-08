@@ -25,16 +25,16 @@ class App extends Component {
         this.state = {
             Cards: cards,
             gameLevel: '', 
-            allCards: cards
+            allCards: cards,
         }
     }
 
-    goToCards = (difficulty) => {
-        let emptyArray = [] 
-        let numberOfPairs = 0 
-        if (difficulty === 'easy') {
-            numberOfPairs = 2
-        } else if ( difficulty === 'medium') {
+    goToCards = (difficulty) => {               //makes sure that when the difficulty is 
+        let emptyArray = []                     //set, it displays a specific # in the array,
+        let numberOfPairs = 0                   //along with a specific number of pairs.
+        if (difficulty === 'easy') {            //And while it does so,that the random array 
+            numberOfPairs = 2                   //with specific # ofpairs, that they 
+        } else if ( difficulty === 'medium') {  //have the same id # and can actually match.
             numberOfPairs = 3
         } else {
             numberOfPairs = 3
@@ -52,17 +52,17 @@ class App extends Component {
         }
 
         let secondArray = this.state.allCards.filter((card, i) =>  {
-            return (emptyArray.includes(card.id) )
-        }) 
-        this.shuffleCards(secondArray)
-        this.setState({
+            return (emptyArray.includes(card.id) )      //this is where the function
+        })                                              //makes sure that they have
+        this.shuffleCards(secondArray)                  //the same Id so the cards    
+        this.setState({                                 //can have a match
             gameLevel: difficulty,
         })
         this.props.history.push('/Cards')
     }
 
-    shuffleCards = (Card) => {
-        var currentIndex = Card.length, temporaryValue, randomIndex;
+    shuffleCards = (Card) => {                                          //this shuffles the
+        var currentIndex = Card.length, temporaryValue, randomIndex;    //array of cards
       
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {

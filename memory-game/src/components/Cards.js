@@ -7,14 +7,7 @@ class Cards extends Component {
         shownCards: this.props.cards
     }
     componentDidMount() {   
-            if (this.props.Difficulty === 'easy') {
-            console.log('this is the easy stuff') }  
-             if (this.props.Difficulty === 'medium') {
-                 console.log('this is the medium stuff') 
-                }
-             if (this.props.Difficulty === 'hard') {
-                 console.log('this is the hard cards!! which i still need to make')
-             }        
+          this.props.cards.shown = false      
     } 
 
     clickMe = (index) => {
