@@ -8,13 +8,13 @@ class Cards extends Component {
         Difficulty: this.props.difficulty
     }
     componentDidMount() {  
-        console.log(this.props.difficulty + 'hello')  
-            if (this.props.difficulty === 'easy') {
+        console.log(this.state.Difficulty + 'hello')  
+            if (this.state.Difficulty === 'easy') {
             console.log('this is the easy stuff') }  
-             if (this.props.difficulty === 'medium') {
+             if (this.state.Difficulty === 'medium') {
                  console.log('this is the medium stuff') 
                 }
-             if (this.props.difficulty === 'hard') {
+             if (this.state.Difficulty === 'hard') {
                  console.log('this is the hard cards!! which i still need to make')
              }
     /*shuffleCards = (Card) => {
@@ -58,7 +58,7 @@ class Cards extends Component {
                     </div>
                 </div>
                 )
-            })
+            }) 
         let showingCard = this.props.cards.map((card, i) => {
             return (
                 <div key={card.id}>
@@ -78,7 +78,7 @@ class Cards extends Component {
                   {/*}  {showingCard}*/}
                 </div>
                 <div className="second">
-                <Link to="/"><button className="btn-lg navbar-btn active">Home</button></Link>
+                <Link to="/"><button className="btn-lg navbar-btn active"> <h3>Home </h3></button></Link>
                 </div>
             </div>
         );  
