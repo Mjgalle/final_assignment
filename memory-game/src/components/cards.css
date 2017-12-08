@@ -21,6 +21,11 @@ p {
     padding-top: 50px;
 }
 
+.container1 {
+    width: 500px;
+    margin: auto;
+}
+
 .match {
     position: relative;
     color: rgb(255, 255, 255);

@@ -10,7 +10,7 @@ class Instructions extends Component {
                     Instructions
                 </div>
                 <div className="text">
-                    <div className="container">
+                    <div className="container1">
                     As you click on the cards, you have to remember to keep an eye on the
                     image of each card. The maximum number of card a user can click is 2. 
                     If those two cards match, they will stay facing the user. If those cards
