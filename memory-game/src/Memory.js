@@ -26,6 +26,10 @@ class Memory extends Component {
 				</button>
 				</Link>
 			</div>	
+			<div>
+				<img src="mountains.png"/>
+
+			</div>
       </div>
     );
   }
