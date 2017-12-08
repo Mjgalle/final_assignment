@@ -41,14 +41,13 @@ class App extends Component {
         }
         for(let n = 0; n < numberOfPairs; n ++) {
             let finished = false 
-            while (!finished) {
-
-            let randomNumber = Math.floor(Math.random() * 3)
-            if (!emptyArray.includes(randomNumber)) {
-                emptyArray.push(randomNumber)
-                finished = true
-            }
-        }
+                while (!finished) {
+                    let randomNumber = Math.floor(Math.random() * 3)
+                        if (!emptyArray.includes(randomNumber)) {
+                            emptyArray.push(randomNumber)
+                            finished = true
+                    }
+                }
         }
 
         let secondArray = this.state.allCards.filter((card, i) =>  {
@@ -56,7 +55,7 @@ class App extends Component {
         })                                              //makes sure that they have
         this.shuffleCards(secondArray)                  //the same Id so the cards    
         this.setState({                                 //can have a match
-            gameLevel: difficulty,
+            gameLevel: difficulty
         })
         this.props.history.push('/Cards')
     }
