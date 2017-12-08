@@ -24,15 +24,37 @@ class App extends Component {
         super ();
         this.state = {
             Cards: cards,
-            gameLevel: ''
+            gameLevel: '', 
+            allCards: cards
         }
     } 
 
     goToCards = (difficulty) => {
+        this.shuffleCards(this.state.Cards)
         this.setState({
             gameLevel: difficulty
         })
         this.props.history.push('/Cards')
+    }
+
+    shuffleCards = (Card) => {
+        var currentIndex = Card.length, temporaryValue, randomIndex;
+      
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+      
+          // Pick a remaining element...
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+      
+          // And swap it with the current element.
+          temporaryValue = Card[currentIndex];
+          Card[currentIndex] = Card[randomIndex];
+          Card[randomIndex] = temporaryValue;
+        }
+        this.setState({
+            Cards: Card
+        })
     }
       
     render() {

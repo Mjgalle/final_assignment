@@ -4,52 +4,34 @@ import {Link} from 'react-router-dom';
 
 class Cards extends Component {
     state = {
-        Card: this.props.cards, //this works, but if i do .id then it logs as undefined.
-        Difficulty: this.props.difficulty
+        shownCards: this.props.cards
     }
-    componentDidMount() {  
-        console.log(this.state.Difficulty + 'hello')  
-            if (this.state.Difficulty === 'easy') {
+    componentDidMount() {   
+            if (this.props.Difficulty === 'easy') {
             console.log('this is the easy stuff') }  
-             if (this.state.Difficulty === 'medium') {
+             if (this.props.Difficulty === 'medium') {
                  console.log('this is the medium stuff') 
                 }
-             if (this.state.Difficulty === 'hard') {
+             if (this.props.Difficulty === 'hard') {
                  console.log('this is the hard cards!! which i still need to make')
-             }
-    /*shuffleCards = (Card) => {
-        var currentIndex = Card.length, temporaryValue, randomIndex;
-      
-        // While there remain elements to shuffle...
-        while (0 !== currentIndex) {
-      
-          // Pick a remaining element...
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex -= 1;
-      
-          // And swap it with the current element.
-          temporaryValue = Card[currentIndex];
-          Card[currentIndex] = Card[randomIndex];
-          Card[randomIndex] = temporaryValue;
-        }
-      }    */      
-    }
+             }        
+    } 
+
+    clickMe = (index) => {
+        let __shownCards = this.props.cards;
+        __shownCards[index].shown = !__shownCards[index].shown;
+        this.setState({
+            shownCards: __shownCards
+        })
+  }
+
 
     /* if level of difficulty is easy, render out, 4 cards
         if level of difficulty is medium, render out, 6 cards, 
         if level of difficulty is hard, render out 8 cards... */ 
     
-
-    clickMe = (index) => {
-          let __shownCards = this.state.Card;
-          __shownCards[index].shown = !__shownCards[index].shown;
-          this.setState({
-              shownCards: __shownCards
-          })
-    }
-    
     render () {
-        console.log(this.props.difficulty)
+      console.log(this.props.difficulty)
         let easyCards = this.props.cards.map ((card, i) => {
             return (
                 <div key={card.id}>
