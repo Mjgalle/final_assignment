@@ -34,7 +34,7 @@ class Cards extends Component {
                 <div>
                     <div className="match">Match The Cards!</div>
                 </div>
-                <div className="row">
+                <div>
                     {showCardOnClick}
                 </div>
                 <div className="second">

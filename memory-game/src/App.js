@@ -18,7 +18,22 @@ const cards = [
     new Card('/images/nick.png', 2),
     new Card('/images/nick.png', 2),
     new Card('/images/Lily.png', 3),
-    new Card('/images/Lily.png', 3)
+    new Card('/images/Lily.png', 3),
+    new Card('/images/charley.png', 4),    
+    new Card('/images/charley.png', 4),
+    new Card('/images/gavin.png', 5),
+    new Card('/images/gavin.png', 5),
+    new Card('/images/Jin.png', 6),
+    new Card('/images/Jin.png', 6),
+    new Card('/images/kim.png', 7),
+    new Card('/images/kim.png', 7),
+    new Card('/images/maria.png', 8),
+    new Card('/images/maria.png', 8), 
+    new Card('/images/noelle.png', 9),
+    new Card('/images/noelle.png', 9),
+    new Card('/images/sandro.png', 10),
+    new Card('/images/sandro.png', 10),
+    
 ]
 
 class App extends Component {
