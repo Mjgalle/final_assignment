@@ -51,6 +51,7 @@ class App extends Component {
             allCards: cards,
             state: false,
             numberofClicks: 0,
+            stayShowing: cards
         }
     }
 
@@ -115,17 +116,19 @@ class App extends Component {
         this.setState({
             Cards: __shownCards,
             numberofClicks: __numberofClicks,
-        } , () =>{
+
+        } , () => {
             if (this.state.numberofClicks === 2) {                      //if the # of clicks is 2
                 setTimeout( () => {                                     //wait 1 second to return 
                     __shownCards = __shownCards.map(card => {           //the state to false.
-                        card.shown = false
+                        card.shown = false //in here you would add to keep it showing
                         return card
                     })
                     __numberofClicks = 0
                     this.setState({
-                        Cards: __shownCards,
-                        numberofClicks: __numberofClicks 
+                        Cards: __shownCards, //returns cards to not show
+                        numberofClicks: __numberofClicks, //returns # of clicks back to 0
+
                     })
                 }, 1000) 
             }
