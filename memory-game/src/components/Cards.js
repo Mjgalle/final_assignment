@@ -10,7 +10,7 @@ class Cards extends Component {
         let showCardOnClick = this.props.cards.map ((card, i) => {
             return (
                 <div key={card.id}>
-                    <div className="col-xs-2 col-md-6 cards" onClick={() => this.props.clickMe(i)} >
+                    <div className="col-xs-2 col-md-4 cards" onClick={() => this.props.clickMe(i)} >
                         {card.shown ? <img className="image" src={card.word}/> : ''}
                     </div>
                 </div>

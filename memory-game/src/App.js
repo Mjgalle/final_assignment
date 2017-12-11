@@ -49,7 +49,8 @@ class App extends Component {
             gameLevel: '', 
             allCards: cards,
             state: false,
-            numberofClicks: 0
+            numberofClicks: 0,
+            sameId: cards
         }
     }
 
@@ -107,17 +108,17 @@ class App extends Component {
     clickMe = (index) => {
         if (this.state.numberofClicks < 2) { 
         let __shownCards = Array.from(this.state.Cards);
-        let __numberofClicks = this.state.numberofClicks + 1
+        let __numberofClicks = this.state.numberofClicks + 1;
 
         __shownCards[index].shown = !__shownCards[index].shown;
         
         this.setState({
             Cards: __shownCards,
-            numberofClicks: __numberofClicks 
+            numberofClicks: __numberofClicks,
         } , () =>{
-            if (this.state.numberofClicks === 2) {
-                setTimeout( () => {
-                    __shownCards = __shownCards.map(card => {
+            if (this.state.numberofClicks === 2) {                      //if the # of clicks is 2
+                setTimeout( () => {                                     //wait 1 second to return 
+                    __shownCards = __shownCards.map(card => {           //the state to false.
                         card.shown = false
                         return card
                     })
@@ -128,7 +129,7 @@ class App extends Component {
                     })
                 }, 1000) 
               
-            }
+            } 
         } )
     }
         
