@@ -22,8 +22,10 @@ class Instructions extends Component {
                     The game is over when all cards have been matched. 
                     </div> 
                 </div>
-                <div className="back">
-                <Link to="/"><button className="btn navbar-btn active"> <h4>Back</h4></button></Link>
+                <div className="instructionsback">
+                <Link to="/"><button className="btn-sm"> 
+                    <h4>Back</h4></button>
+                </Link>
                 </div>
             </div> 
         )

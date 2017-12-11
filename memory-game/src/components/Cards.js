@@ -18,14 +18,16 @@ class Cards extends Component {
             }) 
         return (
             <div>
-                <div>
-                    <div className="match">Match The Cards!</div>
-                </div> 
-                <div>
-                    {showCardOnClick}
+                <div className="match">Match The Cards!</div>
+                <div className="cardsposition">
+                {showCardOnClick}
                 </div>
-                <div className="second">
-                <Link to="/"><button className="btn-lg navbar-btn active"> <h3>Home </h3></button></Link>
+                <div className="homebtn">
+                    <Link to="/">
+                        <button className="btn btn-sm"> 
+                            <h6> back </h6>
+                        </button>
+                    </Link>
                 </div>
             </div>
         );  

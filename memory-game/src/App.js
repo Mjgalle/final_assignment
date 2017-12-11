@@ -4,6 +4,7 @@ import Cards from './components/Cards';
 import Memory from './Memory';
 import {Switch, Route} from 'react-router-dom';
 import Instructions from './components/Instructions';
+import swal from 'sweetalert';
 
 function Card(word,  id) {
     this.word = word;
@@ -50,7 +51,6 @@ class App extends Component {
             allCards: cards,
             state: false,
             numberofClicks: 0,
-            sameId: cards
         }
     }
 
@@ -62,7 +62,7 @@ class App extends Component {
         } else if ( difficulty === 'medium') {  //have the same id # and can actually match.
             numberOfPairs = 6
         } else {
-            numberOfPairs = 11
+            numberOfPairs = 10
         }
         for(let n = 0; n < numberOfPairs; n ++) {
             let finished = false 
@@ -128,8 +128,7 @@ class App extends Component {
                         numberofClicks: __numberofClicks 
                     })
                 }, 1000) 
-              
-            } 
+            }
         } )
     }
         
@@ -150,25 +149,3 @@ class App extends Component {
 
 export default App;
 
-
-/*
-    initialState =  ('reset') => {
-        function Card(word,  id) {
-            this.word = word;
-            this.id = id;
-            this.shown = false;
-        }
-        return {
-            new Card('/images/Dan.png',  0),
-            new Card('/images/Dan.png',  0),
-            new Card('/images/jamie.png',  1),
-            new Card('/images/jamie.png',  1),
-            new Card('/images/nick.png', 2),
-            new Card('/images/nick.png', 2),
-            new Card('/images/Lily.png', 3),
-            new Card('/images/Lily.png', 3),
-        }
-    resetState () {
-        this.state(this.initalState);
-    }
-}*/
