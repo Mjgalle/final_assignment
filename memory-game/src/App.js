@@ -38,10 +38,6 @@ const cards = [
     
 ]
 
-//brandNewArray =  () => {
-//
-//}
-
 class App extends Component {
     constructor () {
         super ();
@@ -106,9 +102,10 @@ class App extends Component {
         })
     }
 
+
     clickMe = (index) => {
         if (this.state.numberofClicks < 2) { 
-        let __shownCards = Array.from(this.state.Cards);
+        let __shownCards = Array.from(this.state.Cards)
         let __numberofClicks = this.state.numberofClicks + 1;
 
         __shownCards[index].shown = !__shownCards[index].shown;
@@ -118,22 +115,41 @@ class App extends Component {
             numberofClicks: __numberofClicks,
 
         } , () => {
-            if (this.state.numberofClicks === 2) {                      //if the # of clicks is 2
-                setTimeout( () => {                                     //wait 1 second to return 
-                    __shownCards = __shownCards.map(card => {           //the state to false.
-                        card.shown = false //in here you would add to keep it showing
-                        return card
-                    })
+            if (this.state.numberofClicks === 2) {                     
+                setTimeout( () => {                                                 
+                    let __stayShowing = Array.from(this.state.Cards).filter((el) => {
+                        return el.shown === true
+                    });
+            
+                       const match = __stayShowing.filter((el, index, arr) => {
+                           for (let i = 0; i < arr.length; i ++) {
+                               if (el.id === arr[i].id && index !==i) {
+                                   return el;
+                               }
+                           }
+                    }); 
+                   const dog =  __shownCards.map((position) => {
+                        if (match.includes(position)) {
+                            return position
+                        } else {
+                            position.shown = false
+                            return position
+                        }
+                    }); 
+                    
                     __numberofClicks = 0
                     this.setState({
-                        Cards: __shownCards, //returns cards to not show
+                        Cards: dog, //returns cards to not show
                         numberofClicks: __numberofClicks, //returns # of clicks back to 0
-
-                    })
+                        
+                     })
                 }, 1000) 
             }
         } )
     }
+    // componentDidUpdate () {
+    //     //end game check
+    // }
         
     }
       
