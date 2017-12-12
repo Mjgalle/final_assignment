@@ -25,16 +25,12 @@ const cards = [
     new Card('/images/charley copy.png', 4),
     new Card('/images/gavin.png', 5),
     new Card('/images/gavin.png', 5),
-    new Card('/images/Jin.png', 6),
-    new Card('/images/Jin.png', 6),
-    new Card('/images/kim copy 2.png', 7),
-    new Card('/images/kim copy 2.png', 7),
-    new Card('/images/maria.png', 8),
-    new Card('/images/maria.png', 8), 
-    new Card('/images/noelle.png', 9),
-    new Card('/images/noelle.png', 9),
-    new Card('/images/sandro.png', 10),
-    new Card('/images/sandro.png', 10),
+    new Card('/images/kim copy 2.png', 6),
+    new Card('/images/kim copy 2.png', 6), 
+    new Card('/images/noelle.png', 7),
+    new Card('/images/noelle.png', 7),
+    new Card('/images/sandro.png', 8),
+    new Card('/images/sandro.png', 8),
     
 ]
 
