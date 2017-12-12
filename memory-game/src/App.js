@@ -154,19 +154,17 @@ class App extends Component {
     }
         
     }
-    // componentDidUpdate() {
-    //      var didWin = Array.from(this.state.Cards).filter((dog) => {
-    //             return this.state.match.includes(dog);
-    //         }).length
-
-    //     if (didWin === this.state.Cards.length && didWin === true) {
-    //         swal ('congrats you won')
-    //         return true
-    //     }
-    //     if (this.state.Cards === true && this.state.Cards.length === 'something to do with level of difficulty') {
-    //         swal('congrats you won')
-    // }
-    // }
+    componentWillUpdate() {
+        var didWin = Array.from(this.state.Cards);
+        var trueCard = true;
+        for (let i = 0; i < didWin.length; i ++)
+            if (didWin[i].shown === true) {
+                return didWin
+            }
+           if(didWin === trueCard) {
+               swal('congrats you won')
+           }
+    }
       
     render() {
         return (
