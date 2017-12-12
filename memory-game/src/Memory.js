@@ -21,9 +21,9 @@ class Memory extends Component {
         		</div>
 			<div className="smallbutton">
 				<Link to ="/Instructions">
-				<button className="btn"> 
-					<h6> Instructions </h6>
-				</button>
+					<button className="btn"> 
+						<h6> Instructions </h6>
+					</button>
 				</Link>
 			</div>	
       </div>

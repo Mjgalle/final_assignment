@@ -12,11 +12,11 @@ function Card(word,  id) {
     this.shown = false;
 }
 
-const cards = [ 
+const cards = [                                             //all the information im going to be using
+    new Card('/images/Dan.png',  0),                        //for the 'cards' of the game
     new Card('/images/Dan.png',  0),
-    new Card('/images/Dan.png',  0),
-    new Card('/images/jamie.png',  1),
-    new Card('/images/jamie.png',  1),
+    new Card('/images/jamie copy.png',  1),
+    new Card('/images/jamie copy.png',  1),
     new Card('/images/nick.png', 2),
     new Card('/images/nick.png', 2),
     new Card('/images/gavin.png', 3),
@@ -44,7 +44,6 @@ class App extends Component {
             allCards: cards,
             state: false,
             numberofClicks: 0,
-            stayShowing: cards,
             pastGames: [],
         }
     }
@@ -65,7 +64,7 @@ class App extends Component {
         } else if ( difficulty === 'medium') {  //have the same id # and can actually match.
             numberOfPairs = 6
         } else {
-            numberOfPairs = 9
+            numberOfPairs = 10
         }
         for(let n = 0; n < numberOfPairs; n ++) {
             let finished = false 
@@ -95,7 +94,7 @@ class App extends Component {
         while (0 !== currentIndex) {
       
           // Pick a remaining element...
-          randomIndex = Math.floor(Math.random() * currentIndex);
+          randomIndex = Math.floor(Math.random() * currentIndex);       //rounds to whole #
           currentIndex -= 1;
       
           // And swap it with the current element.
@@ -104,68 +103,86 @@ class App extends Component {
           Card[randomIndex] = temporaryValue;
         }
         this.setState({
-            Cards: Card
+            Cards: Card                                                 
         })
     }
 
 
     clickMe = (index) => {
-        if (this.state.numberofClicks < 2) { 
-        let __shownCards = Array.from(this.state.Cards)
-        let __numberofClicks = this.state.numberofClicks + 1;
-
-        __shownCards[index].shown = !__shownCards[index].shown;
+        if (this.state.numberofClicks < 2) {                                   //if # of clicks is less than 2
+        let __shownCards = Array.from(this.state.Cards)                        //seting up __shownCards with array of Cards
+        let __numberofClicks = this.state.numberofClicks + 1;                  //keep track of clicks
+    
+        __shownCards[index].shown = !__shownCards[index].shown;                //toggle between shown & not shown
         
-        this.setState({
-            Cards: __shownCards,
-            numberofClicks: __numberofClicks,
+        this.setState({                                         
+            Cards: __shownCards,                                               //sets State for shown cards
+            numberofClicks: __numberofClicks,                                  //sets state for #of clicks 
 
         } , () => {
-            if (this.state.numberofClicks === 2) {                     
-                setTimeout( () => {                                                 
-                    let __stayShowing = Array.from(this.state.Cards).filter((el) => {
-                        return el.shown === true
+            if (this.state.numberofClicks === 2) {                              //once the # of clicks is equal to 2
+                setTimeout( () => {                                             //Start the time out function, which is set to 1 second
+                    let __stayShowing = Array.from(this.state.Cards).filter((el) => {               //check which cards are set to True
+                        return el.shown === true                                                    //if they are we're going to use them
                     });
             
-                       const match = __stayShowing.filter((el, index, arr) => {
-                           for (let i = 0; i < arr.length; i ++) {
-                               if (el.id === arr[i].id && index !==i) {
+                       const match = __stayShowing.filter((el, index, arr) => {         //going to check array for matches with .shown === true
+                           for (let i = 0; i < arr.length; i ++) {                      //loops through array
+                               if (el.id === arr[i].id && index !==i) {                 //if there is a match return that match
                                    return el;
                                }
                            }
                     }); 
-                   const dog =  __shownCards.map((position) => {
-                        if (match.includes(position)) {
-                            return position
+                   const cardToPutBack =  __shownCards.map((cardToNotShow) => {                //going to see which cards to put back to original state
+                        if (match.includes(cardToNotShow)) {                                   //if the 'match' is included in this array,
+                            return cardToNotShow                                   
                         } else {
-                            position.shown = false
-                            return position
-                        }
+                        cardToNotShow.shown = false                             //sets the state back to false to not show
+                            return cardToNotShow                                //puts back this card
+                        }       
                     }); 
                     
-                    __numberofClicks = 0
+                    __numberofClicks = 0                                        //if number of clicks is 0
                     this.setState({
-                        Cards: dog, //returns cards to not show
-                        numberofClicks: __numberofClicks, //returns # of clicks back to 0
+                        Cards: cardToPutBack,                                   //returns cards to not show using cardToPutBack
+                        numberofClicks: __numberofClicks,                       //returns # of clicks back to 0
                         
                      })
-                }, 1000) 
-            }
+                }, 1000)                                //where amnt of time is set for the setTimeout function.
+            }  
         })
     }
-
-    
-
         
     }
+    // componentDidUpdate() {
+    //      var didWin = Array.from(this.state.Cards).filter((dog) => {
+    //             return this.state.match.includes(dog);
+    //         }).length
+
+    //     if (didWin === this.state.Cards.length && didWin === true) {
+    //         swal ('congrats you won')
+    //         return true
+    //     }
+    //     if (this.state.Cards === true && this.state.Cards.length === 'something to do with level of difficulty') {
+    //         swal('congrats you won')
+    // }
+    // }
       
     render() {
         return (
             <div className="container jumbotron">
                 <Switch>
-                    <Route path='/Cards' render={(props) => <Cards {...props} cards={this.state.Cards} clickMe={this.clickMe} difficulty={this.state.gameLevel} />}/> 
-                    <Route exact path='/' render={(props) => <Memory {...props} goToCards={this.goToCards}  cards={this.state.Cards} />}/>
-                    <Route path='/Instructions' render={(props) => <Instructions {...props} />} />
+                    <Route path='/Cards' render={(props) => 
+                        <Cards {...props} cards={this.state.Cards} 
+                                          clickMe={this.clickMe} 
+                                          difficulty={this.state.gameLevel} />} /> 
+
+                    <Route exact path='/' render={(props) => 
+                        <Memory {...props} goToCards={this.goToCards}  
+                                           cards={this.state.Cards} />}/>
+
+                    <Route path='/Instructions' render={(props) => 
+                        <Instructions {...props} />} />
 	            </Switch>
             </div>
         );

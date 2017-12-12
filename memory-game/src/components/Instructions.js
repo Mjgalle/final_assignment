@@ -14,10 +14,10 @@ class Instructions extends Component {
                     image of each card. The maximum number of card a user can click is 2. 
                     If those two cards match, they will stay facing the user. If those cards
                     do not match, they will turn back over. 
-                <br />
-                <br />
-                <br />
-                <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                     The game is over when all cards have been matched. 
                 </div> 
                 <div className="instructionsback">
