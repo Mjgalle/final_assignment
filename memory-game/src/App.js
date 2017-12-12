@@ -48,17 +48,17 @@ class App extends Component {
             state: false,
             numberofClicks: 0,
             stayShowing: cards,
-            pastGames: []
+            pastGames: [],
         }
     }
 
-    componentWillMount () {
-        if (localStorage.getItem('StatsList')) {
-            this.setState({
-                pastGames: JSON.parse(localStorage.getItem('StatsList'))
-            })
-        }
-    }
+    // componentWillMount () {
+    //     if (localStorage.getItem('StatsList')) {
+    //         this.setState({
+    //             pastGames: JSON.parse(localStorage.getItem('StatsList'))
+    //         })
+    //     }
+    // }
 
     goToCards = (difficulty) => {               //makes sure that when the difficulty is 
         let emptyArray = []                     //set, it displays a specific # in the array,
@@ -156,6 +156,9 @@ class App extends Component {
             }
         })
     }
+
+    
+
         
     }
       
