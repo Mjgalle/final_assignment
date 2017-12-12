@@ -47,7 +47,16 @@ class App extends Component {
             allCards: cards,
             state: false,
             numberofClicks: 0,
-            stayShowing: cards
+            stayShowing: cards,
+            pastGames: []
+        }
+    }
+
+    componentWillMount () {
+        if (localStorage.getItem('StatsList')) {
+            this.setState({
+                pastGames: JSON.parse(localStorage.getItem('StatsList'))
+            })
         }
     }
 
@@ -59,7 +68,7 @@ class App extends Component {
         } else if ( difficulty === 'medium') {  //have the same id # and can actually match.
             numberOfPairs = 6
         } else {
-            numberOfPairs = 10
+            numberOfPairs = 8
         }
         for(let n = 0; n < numberOfPairs; n ++) {
             let finished = false 
@@ -145,11 +154,8 @@ class App extends Component {
                      })
                 }, 1000) 
             }
-        } )
+        })
     }
-    // componentDidUpdate () {
-    //     //end game check
-    // }
         
     }
       

@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import './cards.css';
 import {Link} from 'react-router-dom';
 
-class Cards extends Component {
 
+class Cards extends Component {
+    refreshPage = () => {
+        window.location.reload();
+    }
  
     
     render () {
@@ -23,8 +26,8 @@ class Cards extends Component {
                 {showCardOnClick}
                 </div>
                 <div className="homebtn">
-                    <Link to="/">
-                        <button className="btn btn-sm"> 
+                    <Link to="" refresh="true">
+                        <button type="button" onClick={this.refreshPage} className="btn btn-sm"> 
                             <h6> back </h6>
                         </button>
                     </Link>
