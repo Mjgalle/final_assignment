@@ -42,7 +42,6 @@ class App extends Component {
             Cards: cards,
             gameLevel: '', 
             allCards: cards,
-            state: false,
             numberofClicks: 0,
             pastGames: [],
         }
@@ -159,11 +158,11 @@ class App extends Component {
         var trueCard = true;
         for (let i = 0; i < didWin.length; i ++){
             if (didWin[i].shown === false) {
-             trueCard = false
-                }
-        }
-        
-        if(trueCard === true) {
+             trueCard = false                           //any time a Card is not shown, change the
+                }                                       //value of trueCard to false. So when all the
+        }                                               //cards are finally showing, trueCard will 
+                                                        //be true, being able to Congratulate the user
+        if(trueCard === true) {                         //on findind matches for all the Cards. 
             swal({
                 title: "Congratulations!!", 
                 text: "You got ALL the matches!",  
