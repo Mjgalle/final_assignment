@@ -157,13 +157,19 @@ class App extends Component {
     componentWillUpdate() {
         var didWin = Array.from(this.state.Cards);
         var trueCard = true;
-        for (let i = 0; i < didWin.length; i ++)
-            if (didWin[i].shown === true) {
-                return didWin
-            }
-           if(didWin === trueCard) {
-               swal('congrats you won')
-           }
+        for (let i = 0; i < didWin.length; i ++){
+            if (didWin[i].shown === false) {
+             trueCard = false
+                }
+        }
+        
+        if(trueCard === true) {
+            swal({
+                title: "Congratulations!!", 
+                text: "You got ALL the matches!",  
+            });
+        }
+            
     }
       
     render() {
