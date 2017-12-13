@@ -43,17 +43,8 @@ class App extends Component {
             gameLevel: '', 
             allCards: cards,
             numberofClicks: 0,
-            pastGames: [],
         }
     }
-
-    // componentWillMount () {
-    //     if (localStorage.getItem('StatsList')) {
-    //         this.setState({
-    //             pastGames: JSON.parse(localStorage.getItem('StatsList'))
-    //         })
-    //     }
-    // }
 
     goToCards = (difficulty) => {               //makes sure that when the difficulty is 
         let emptyArray = []                     //set, it displays a specific # in the array,
