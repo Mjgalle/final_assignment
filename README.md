@@ -22,6 +22,11 @@ What I will be delivering for my Final Project is a fully functioning Memory Gam
  - The cards will stay showing the content, and not be able to get clicked on again. 
  - Once all the cards have been matched they will get a prompt saying congratulations on their win. 
 
+ ## SETUP
+  - Install dependencies: npm install
+  - Run: npm start
+
+
 
 
 
