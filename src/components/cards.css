@@ -12,7 +12,7 @@
     margin-left: 30px;
     margin-top: 20px;
     animation-name: cards;
-    animation-duration: 50s;
+    animation-duration: 60s;
 }
 
 @keyframes cards {
@@ -54,10 +54,6 @@ p {
 
 .instructionsback {
     padding-top: 50px;
-}
-
-h4 {
-    font-size: 12px;
 }
 
 .homebtn {

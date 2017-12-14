@@ -23,7 +23,7 @@ class Instructions extends Component {
                 <div className="instructionsback">
                 <Link to="/">
                     <button className="btn-sm"> 
-                        <h4>Back</h4>
+                        <h6>Back</h6>
                     </button>
                 </Link>
                 </div>
