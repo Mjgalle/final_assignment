@@ -11,7 +11,7 @@ class Cards extends Component {
         let showCardOnClick = this.props.cards.map ((card, i) => {
             return (
                 <div key={card.id}>
-                    <div className="col-xs-2 col-md-4 cards myButton" onClick={() => this.props.clickMe(i)} >
+                    <div className="col-xs-6 col-md-4 cards myButton" onClick={() => this.props.clickMe(i)} >
                         {card.shown ?
                              <img className="image" src={card.word}/>
                               : 
@@ -24,6 +24,7 @@ class Cards extends Component {
         return (
             <div>
                 <div className="match">Match The Cards!</div>
+                <div className="container">
                 <div className="cardsposition">
                     {showCardOnClick}
                 </div>
@@ -33,6 +34,7 @@ class Cards extends Component {
                             <h6> Back </h6>
                         </button>
                     </Link>
+                </div>
                 </div>
             </div>
         );  
