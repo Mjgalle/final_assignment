@@ -11,9 +11,12 @@ class Cards extends Component {
         let showCardOnClick = this.props.cards.map ((card, i) => {
             return (
                 <div key={card.id}>
-                    <div className="col-xs-2 col-md-4 cards" onClick={() => this.props.clickMe(i)} >
-                        {card.shown ? <img className="image" src={card.word}/> : ''}
-                        
+                    <div className="col-xs-2 col-md-4 cards myButton" onClick={() => this.props.clickMe(i)} >
+                        {card.shown ?
+                             <img className="image" src={card.word}/>
+                              : 
+                              ''
+                              }
                     </div>
                 </div>
                 )
@@ -27,7 +30,7 @@ class Cards extends Component {
                 <div className="homebtn">
                     <Link to="" refresh="true">
                         <button type="button" onClick={this.refreshPage} className="btn btn-sm"> 
-                            <h6> back </h6>
+                            <h6> Back </h6>
                         </button>
                     </Link>
                 </div>
