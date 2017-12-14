@@ -1,28 +1,18 @@
 {
-  "name": "final_assignment",
-  "version": "1.0.0",
-  "description": "Final Project for Brainstation",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Mjgalle/final_assignment.git"
-  },
-  "keywords": [
-    "final",
-    "assignment",
-    "memory",
-    "game"
-  ],
-  "author": "Maria J. Gallegos-Vallejo",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Mjgalle/final_assignment/issues"
-  },
-  "homepage": "https://github.com/Mjgalle/final_assignment#readme",
+  "name": "memory-game",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "react-router-dom": "^4.2.2"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17",
+    "sweetalert": "^2.0.8"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
