@@ -10,32 +10,30 @@ class Cards extends Component {
     render () {
         let showCardOnClick = this.props.cards.map ((card, i) => {
             return (
-                <div key={card.id}>
-                    <div className="col-xs-6 col-md-4 cards myButton" onClick={() => this.props.clickMe(i)} >
-                        {card.shown ?
-                             <img className="image" src={card.word}/>
-                              : 
-                              ''
-                              }
-                    </div>
+                <div key={card.id} className="cards myButton" onClick={() => this.props.clickMe(i)} >
+                    {card.shown ?
+                            <img className="image" src={card.word}/>
+                            : 
+                            ''
+                            }
                 </div>
                 )
             }) 
         return (
-            <div>
-                <div className="match">Match The Cards!</div>
-                <div className="container">
-                <div className="cardsposition">
-                    {showCardOnClick}
-                </div>
-                <div className="homebtn">
-                    <Link to="" refresh="true">
-                        <button type="button" onClick={this.refreshPage} className="btn btn-sm"> 
-                            <h6> Back </h6>
-                        </button>
-                    </Link>
-                </div>
-                </div>
+            <div class="wrapper">
+                <h2 className="match">Match The Cards!</h2>
+                    <div class="card-wrapper">
+                        <div class="template-column">
+                            {showCardOnClick}
+                        </div>
+                    </div>
+                    <div className="homebtn">
+                        <Link to="/" refresh="true">
+                            <button type="button" className="btn btn-sm"> 
+                                <h6> Back </h6>
+                            </button>
+                        </Link>
+                    </div>
             </div>
         );  
     }

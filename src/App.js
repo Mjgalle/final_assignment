@@ -164,7 +164,7 @@ class App extends Component {
       
     render() {
         return (
-            <div className="container jumbotron">
+            <div>
                 <Switch>
                     <Route path='/Cards' render={(props) => 
                         <Cards {...props} cards={this.state.Cards} 

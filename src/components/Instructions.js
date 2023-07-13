@@ -6,24 +6,21 @@ class Instructions extends Component {
     render () {
         return (
             <div>
-                <div className="match">
+                <h2 className="match">
                     Instructions
-                </div>
-                <div className="containerForInstructions text">
+                </h2>
+                <p className="containerForInstructions text">
                     As you click on the cards, you have to remember to keep an eye on the
                     image of each card. The maximum number of card a user can click is 2. 
                     If those two cards match, they will stay facing the user. If those cards
                     do not match, they will turn back over. 
-                    <br />
-                    <br />
-                    <br />
-                    <br />
+
                     The game is over when all cards have been matched. 
-                </div> 
+                </p> 
                 <div className="instructionsback">
                 <Link to="/">
                     <button className="btn-sm"> 
-                        <h6>Back</h6>
+                        Back
                     </button>
                 </Link>
                 </div>
