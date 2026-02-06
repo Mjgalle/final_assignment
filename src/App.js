@@ -1,209 +1,185 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Cards from "./components/Cards";
 import Memory from "./Memory";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 import Instructions from "./components/Instructions";
-import swal from "sweetalert";
 
-function Card(word, id) {
+function Card(word, id, uid) {
   this.word = word;
   this.id = id;
+  this.uid = uid;
   this.shown = false;
+  this.matched = false;
 }
+
+const WinningMessage = ({ setShowPopUP }) => {
+  return (
+    <div className="winning-message" onClick={() => setShowPopUP(false)}>
+      <div className="pop-up">
+        <h2>Congrats,</h2>
+        <p>You won!</p>
+      </div>
+    </div>
+  );
+};
 
 const cards = [
   //all the information im going to be using
-  new Card("/images/Dan.png", 0), //for the 'cards' of the game
-  new Card("/images/Dan.png", 0),
-  new Card("/images/jamie copy.png", 1),
-  new Card("/images/jamie copy.png", 1),
-  new Card("/images/nick.png", 2),
-  new Card("/images/nick.png", 2),
-  new Card("/images/gavin.png", 3),
-  new Card("/images/gavin.png", 3),
-  new Card("/images/charley copy.png", 4),
-  new Card("/images/charley copy.png", 4),
-  new Card("/images/Lily.png", 5),
-  new Card("/images/Lily.png", 5),
-  new Card("/images/kim copy 2.png", 6),
-  new Card("/images/kim copy 2.png", 6),
-  new Card("/images/noelle.png", 7),
-  new Card("/images/noelle.png", 7),
-  new Card("/images/sandro.png", 8),
-  new Card("/images/sandro.png", 8),
-  new Card("/images/maria.png", 9),
-  new Card("/images/maria.png", 9),
+  new Card("/images/Dan.png", 0, "dan-1"), //for the 'cards' of the game
+  new Card("/images/Dan.png", 0, "dan-2"),
+  new Card("/images/jamie copy.png", 1, "jamie-1"),
+  new Card("/images/jamie copy.png", 1, "jamie-2"),
+  new Card("/images/nick.png", 2, "nick-1"),
+  new Card("/images/nick.png", 2, "nick-2"),
+  new Card("/images/gavin.png", 3, "gavin-1"),
+  new Card("/images/gavin.png", 3, "gavin-2"),
+  new Card("/images/charley copy.png", 4, "charley-1"),
+  new Card("/images/charley copy.png", 4, "charley-2"),
+  new Card("/images/Lily.png", 5, "lily-1"),
+  new Card("/images/Lily.png", 5, "lily-2"),
+  new Card("/images/kim copy 2.png", 6, "kim-1"),
+  new Card("/images/kim copy 2.png", 6, "kim-2"),
+  new Card("/images/noelle.png", 7, "noelle-1"),
+  new Card("/images/noelle.png", 7, "noelle-2"),
+  new Card("/images/sandro.png", 8, "sandro-1"),
+  new Card("/images/sandro.png", 8, "sandro-2"),
+  new Card("/images/maria.png", 9, "maria-1"),
+  new Card("/images/maria.png", 9, "maria-2"),
 ];
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      Cards: cards,
-      gameLevel: "",
-      allCards: cards,
-      numberofClicks: 0,
-    };
-  }
+const App = (props) => {
+  const [cardsState, setCardsState] = useState(cards);
+  const [gameLevel, setGameLevel] = useState("");
+  const allCards = cards;
+  const { history } = props;
+  const [showPopUp, setShowPopUP] = useState(false);
 
-  goToCards = (difficulty) => {
-    let emptyArray = [];
-    let numberOfPairs = 0;
-    if (difficulty === "easy") {
-      numberOfPairs = 4;
-    } else if (difficulty === "medium") {
-      numberOfPairs = 6;
-    } else {
-      numberOfPairs = 10;
-    }
-    for (let n = 0; n < numberOfPairs; n++) {
-      let finished = false;
-      while (!finished) {
-        let randomNumber = Math.floor(Math.random() * numberOfPairs);
-        if (!emptyArray.includes(randomNumber)) {
-          emptyArray.push(randomNumber);
-          finished = true;
-        }
-      }
+  const UNIQUE_IDS = 10; // ids 0..9
+
+  const goToCards = (difficulty) => {
+    const numberOfPairs =
+      difficulty === "easy" ? 4 : difficulty === "medium" ? 6 : 10;
+
+    // Pick N unique ids from 0..9
+    const chosenIds = new Set();
+    while (chosenIds.size < numberOfPairs) {
+      chosenIds.add(Math.floor(Math.random() * UNIQUE_IDS));
     }
 
-    let secondArray = this.state.allCards.filter((card, i) => {
-      return emptyArray.includes(card.id); //this is where the function
-    }); //makes sure that they have
-    this.shuffleCards(secondArray); //the same Id so the cards
-    this.setState({
-      //can have a match
-      gameLevel: difficulty,
-    });
-    this.props.history.push("/Cards");
+    // Build the deck, reset flags
+    const selected = allCards
+      .filter((card) => chosenIds.has(card.id))
+      .map((card) => ({ ...card, shown: false, matched: false })); // if you added matched
+
+    shuffleCards(selected);
+    setGameLevel(difficulty);
+    history.push("/Cards");
   };
 
-  shuffleCards = (Card) => {
-    let currentIndex = Card.length,
-      temporaryValue,
-      randomIndex; //array of cards
+  const shuffleCards = (cardsToShuffle) => {
+    const shuffled = [...cardsToShuffle];
+    let currentIndex = shuffled.length;
 
-    while (0 !== currentIndex) {
-      randomIndex = Math.floor(Math.random() * currentIndex); //rounds to whole #
+    while (currentIndex !== 0) {
+      const randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-
-      temporaryValue = Card[currentIndex];
-      Card[currentIndex] = Card[randomIndex];
-      Card[randomIndex] = temporaryValue;
+      [shuffled[currentIndex], shuffled[randomIndex]] = [
+        shuffled[randomIndex],
+        shuffled[currentIndex],
+      ];
     }
-    this.setState({
-      Cards: Card,
-    });
+    setCardsState(shuffled);
   };
 
-  clickMe = (index) => {
-    if (this.state.numberofClicks < 2) {
-      let __shownCards = Array.from(this.state.Cards); //seting up __shownCards with array of Cards
-      let __numberofClicks = this.state.numberofClicks + 1; //keep track of clicks
+  const clickMe = (index) => {
+    const clicked = cardsState[index];
 
-      __shownCards[index].shown = !__shownCards[index].shown; //toggle between shown & not shown
+    // Don’t allow clicking matched cards or already-shown cards
+    if (!clicked || clicked.matched || clicked.shown) return;
 
-      this.setState(
-        {
-          Cards: __shownCards, //sets State for shown cards
-          numberofClicks: __numberofClicks, //sets state for #of clicks
-        },
-        () => {
-          if (this.state.numberofClicks === 2) {
-            //once the # of clicks is equal to 2
-            setTimeout(() => {
-              //Start the time out function, which is set to 1 second
-              let __stayShowing = Array.from(this.state.Cards).filter((el) => {
-                //check which cards are set to True
-                return el.shown === true; //if they are we're going to use them
-              });
+    // Only allow 2 unmatched cards flipped at a time
+    const currentlyFlipped = cardsState.filter((c) => c.shown && !c.matched);
+    if (currentlyFlipped.length >= 2) return;
 
-              const match = __stayShowing.filter((el, index, arr) => {
-                //going to check array for matches with .shown === true
-                for (let i = 0; i < arr.length; i++) {
-                  //loops through array
-                  if (el.id === arr[i].id && index !== i) {
-                    //if there is a match return that match
-                    return el;
-                  }
-                }
-              });
-              const cardToPutBack = __shownCards.map((cardToNotShow) => {
-                //going to see which cards to put back to original state
-                if (match.includes(cardToNotShow)) {
-                  //if the 'match' is included in this array,
-                  return cardToNotShow;
-                } else {
-                  cardToNotShow.shown = false; //sets the state back to false to not show
-                  return cardToNotShow; //puts back this card
-                }
-              });
-
-              __numberofClicks = 0; //if number of clicks is 0
-              this.setState({
-                Cards: cardToPutBack, //returns cards to not show using cardToPutBack
-                numberofClicks: __numberofClicks, //returns # of clicks back to 0
-              });
-            }, 1000); //where amnt of time is set for the setTimeout function.
-          }
-        }
-      );
-    }
-  };
-  componentWillUpdate() {
-    var didWin = Array.from(this.state.Cards);
-    var trueCard = true;
-    for (let i = 0; i < didWin.length; i++) {
-      if (didWin[i].shown === false) {
-        trueCard = false;
-      }
-    }
-
-    if (trueCard === true) {
-      swal({
-        title: "Congratulations!!",
-        text: "You got ALL the matches!",
-      });
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        <Switch>
-          <Route
-            path="/Cards"
-            render={(props) => (
-              <Cards
-                {...props}
-                cards={this.state.Cards}
-                clickMe={this.clickMe}
-                difficulty={this.state.gameLevel}
-              />
-            )}
-          />
-
-          <Route
-            exact
-            path="/"
-            render={(props) => (
-              <Memory
-                {...props}
-                goToCards={this.goToCards}
-                cards={this.state.Cards}
-              />
-            )}
-          />
-
-          <Route
-            path="/Instructions"
-            render={(props) => <Instructions {...props} />}
-          />
-        </Switch>
-      </div>
+    // Flip the clicked card up
+    const nextCards = cardsState.map((card, i) =>
+      i === index ? { ...card, shown: true } : card
     );
-  }
-}
+    setCardsState(nextCards);
 
-export default App;
+    const flippedNow = nextCards.filter((c) => c.shown && !c.matched);
+
+    if (flippedNow.length === 2) {
+      setTimeout(() => {
+        setCardsState((currentCards) => {
+          const flipped = currentCards
+            .map((card, i) => ({ card, i }))
+            .filter(({ card }) => card.shown && !card.matched);
+
+          if (flipped.length !== 2) return currentCards;
+
+          const [
+            { card: firstCard, i: firstIndex },
+            { card: secondCard, i: secondIndex },
+          ] = flipped;
+
+          const isMatch = firstCard.id === secondCard.id;
+
+          return currentCards.map((card, i) => {
+            if (i !== firstIndex && i !== secondIndex) return card;
+
+            if (isMatch) {
+              // ✅ keep them up and mark as matched
+              return { ...card, matched: true, shown: true };
+            }
+
+            // ❌ not a match: flip both down
+            return { ...card, shown: false };
+          });
+        });
+      }, 1000);
+    }
+  };
+
+  useEffect(() => {
+    const didWin =
+      cardsState.length > 0 && cardsState.every((card) => card.matched);
+    if (didWin) setShowPopUP(true);
+  }, [cardsState]);
+
+  return (
+    <div>
+      <Switch>
+        <Route
+          path="/Cards"
+          render={() => (
+            <Cards
+              cards={cardsState}
+              clickMe={clickMe}
+              difficulty={gameLevel}
+            />
+          )}
+        />
+
+        <Route
+          exact
+          path="/"
+          render={(props) => (
+            <Memory {...props} goToCards={goToCards} cards={cardsState} />
+          )}
+        />
+
+        <Route
+          path="/Instructions"
+          render={(props) => <Instructions {...props} />}
+        />
+      </Switch>
+      {showPopUp && (
+        <WinningMessage showPopUp={showPopUp} setShowPopUP={setShowPopUP} />
+      )}
+    </div>
+  );
+};
+
+export default withRouter(App);

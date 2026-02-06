@@ -3,22 +3,20 @@ import "./cards.css";
 import { Link } from "react-router-dom";
 
 class Cards extends Component {
-  refreshPage = () => {
-    window.location.reload();
-  };
   render() {
     let showCardOnClick = this.props.cards.map((card, i) => {
       return (
         <div
-          key={i}
+          key={card.uid}
           className="cards myButton"
-          onClick={() => this.props.clickMe(i)}
+          onClick={() => !this.props.disabled && this.props.clickMe(i)}
         >
-          {card.shown ? <img className="image" src={card.word} /> : ""}
+          {card.shown ? (
+            <img className="image" alt="card.word" src={card.word} />
+          ) : null}
         </div>
       );
     });
-    console.log("this is props", this.props);
     return (
       <div className="wrapper">
         <h2 className="title">Match The Cards!</h2>

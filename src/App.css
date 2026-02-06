@@ -19,6 +19,38 @@
   margin: 32px auto;
 }
 
+.pop-up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.pop-up h2,
+.pop-up p {
+  margin: 2px;
+  padding: 2px;
+}
+
+.winning-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .smallbutton {
   margin: auto;
   position: relative;

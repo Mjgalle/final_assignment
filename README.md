@@ -1,31 +1,39 @@
-# Project Proposal: {{MEMORY GAME}}
+# Memory Game
 
-## Project Goals
-Have a fully functioning memory game. Was able to deploy it using Heroku.
+A simple React memory matching game where you flip two cards at a time and try to find all pairs.
 
+## Features
+
+- Choose a difficulty level (easy/medium/hard)
+- Flip up to 2 cards per turn
+- Non-matching cards flip back after a short delay
+- Win alert when all matches are found
 
 ## Tech Stack
 
-### First Party Tools
-- Going to be working with React and Node. React is going to handle the interface and node is going to be used to communicate with the data in the React application. 
+- React
+- React Router (v4)
+- CSS (custom styling)
 
-### Third Party Tools
-- The information that will be displayed on each 'card' are images used from all the students form this cohort. Including the teachers and our great T.A. U
-- Use bootstrap for CSS. Some third party styling tools all documented and sourced where they are being used. 
+## Data / Assets
 
-## Features and Deliverables
-What I will be delivering for my Final Project is a fully functioning Memory Game. 
+- Card faces are images of classmates/instructors from my cohort (created from screenshots and edited in Adobe Illustrator).
 
-## Data
- - The images were created in Adobe Illustrator using screenshots. 
- - Users can only click up to 2 cards, once they click on the two cards a timer function starts which gives the user a second to look at the content on each of the cards. If the content makes a 'match' the card will stay facing up. If not the cards will go back to not facing the user.  
- - Once all the cards have been matched they will get a prompt saying congratulations on their win. 
+## Setup
 
+```bash
+npm install
+npm start
+```
 
-## SETUP
-- Install dependencies: npm install
-- Run: npm start
+## Improvements & Learnings
 
+While reviving and modernizing this project, I focused on improving maintainability and aligning the codebase with modern React patterns:
 
-## Link To Site:
-https://radiant-shelf-72509.herokuapp.com/
+- Migrated legacy class-component assumptions to function components using React Hooks.
+- Upgraded React to support hooks and resolved runtime errors caused by outdated dependencies.
+- Removed unused global Bootstrap styles and consolidated styling into custom CSS.
+- Cleaned up routing logic and fixed broken navigation flows.
+- Improved state handling and guarded against common runtime edge cases.
+
+This cleanup helped reinforce best practices around incremental refactors, dependency management, and debugging legacy React applications.
