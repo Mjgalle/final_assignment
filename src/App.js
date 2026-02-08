@@ -5,9 +5,10 @@ import Memory from "./Memory";
 import { Switch, Route, withRouter } from "react-router-dom";
 import Instructions from "./components/Instructions";
 
-const instructionsData = {
-  title: "Instructions",
-  description:
+const data = {
+  matchTitle: "Match The Cards!",
+  instructionsTitle: "Instructions",
+  instructionsDescription:
     "As you click on the cards, you have to remember to keep an eye on the image of each card. The maximum number of card a user can click is 2. If those two cards match, they will stay facing the user. If those cards do not match, they will turn back over. The game is over when all cards have been matched.",
 };
 
@@ -297,7 +298,7 @@ const App = (props) => {
     <div>
       <Switch>
         <Route path="/Cards">
-          <Cards cards={cardsState} clickMe={clickMe} />
+          <Cards cards={cardsState} clickMe={clickMe} data={data} />
         </Route>
 
         <Route exact path="/">
@@ -305,7 +306,7 @@ const App = (props) => {
         </Route>
 
         <Route path="/Instructions">
-          <Instructions instructionsData={instructionsData} />
+          <Instructions data={data} />
         </Route>
       </Switch>
       {showPopUp && (

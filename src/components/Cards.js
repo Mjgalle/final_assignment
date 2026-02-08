@@ -2,7 +2,7 @@ import React from "react";
 import "./cards.css";
 import { Link } from "react-router-dom";
 
-const Cards = ({ cards, clickMe }) => {
+const Cards = ({ cards, clickMe, data }) => {
   let showCardOnClick = cards.map((card, i) => {
     return (
       <div key={card.uid} className="cards myButton" onClick={() => clickMe(i)}>
@@ -14,7 +14,7 @@ const Cards = ({ cards, clickMe }) => {
   });
   return (
     <div className="wrapper">
-      <h2 className="title">Match The Cards!</h2>
+      <h2 className="title">{data.matchTitle}</h2>
 
       <div className="template-column">{showCardOnClick}</div>
 
