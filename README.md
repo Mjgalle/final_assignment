@@ -37,3 +37,5 @@ While reviving and modernizing this project, I focused on improving maintainabil
 - Improved state handling and guarded against common runtime edge cases.
 
 This cleanup helped reinforce best practices around incremental refactors, dependency management, and debugging legacy React applications.
+
+Test setup: Jest + React Testing Library
