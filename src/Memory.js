@@ -1,45 +1,31 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 import { Link } from "react-router-dom";
 
-class Memory extends Component {
-  render() {
-    return (
-      <div className="circle">
-        <h2 className="title main-title">Memory</h2>
-        <div className="btn-group">
+const difficultyLevels = ["easy", "medium", "hard"];
+
+const Memory = ({ goToCards }) => {
+  return (
+    <div className="circle">
+      <h2 className="title main-title">Memory</h2>
+      <div className="btn-group">
+        {difficultyLevels.map((level) => (
           <button
+            key={level}
             onClick={() => {
-              this.props.goToCards("easy");
+              goToCards(level);
             }}
             className="btn-lg navbar-btn"
           >
-            Easy
+            {level.charAt(0).toUpperCase() + level.slice(1)}
           </button>
-          <button
-            onClick={() => {
-              this.props.goToCards("medium");
-            }}
-            className="btn-lg navbar-btn"
-          >
-            Medium
-          </button>
-          <button
-            onClick={() => {
-              this.props.goToCards("hard");
-            }}
-            className="btn-lg navbar-btn"
-          >
-            {" "}
-            Hard
-          </button>
-        </div>
-        <Link to="/Instructions">
-          <button className="btn-sm">Instructions</button>
-        </Link>
+        ))}
       </div>
-    );
-  }
-}
+      <Link to="/Instructions">
+        <button className="btn-sm">Instructions</button>
+      </Link>
+    </div>
+  );
+};
 
 export default Memory;
